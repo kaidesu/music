@@ -1,0 +1,72 @@
+.music-footer {
+    @apply .py-4 .px-4 .bg-grey-darker .text-grey-light .flex .items-center;
+}
+
+.now-playing {
+    @apply .w-1/4 .text-sm .font-bold;
+
+    &__song {
+        @apply .mb-2 .text-white;
+    }
+
+    &__artist {
+        @apply .text-xs;
+    }
+}
+
+
+.plyr {
+    width: 100%;
+}
+
+.plyr--audio .plyr__controls {
+    @apply .bg-transparent;
+}
+
+.plyr--full-ui input[type='range'] {
+    @apply .text-teal-dark;
+}
+
+.plyr--audio .plyr__control.plyr__tab-focus, .plyr--audio .plyr__control:hover, .plyr--audio .plyr__control[aria-expanded='true'] {
+    @apply .bg-teal-dark;
+}
+
+.plyr__menu__container {
+    @apply .bg-grey-darkest;
+}
+
+// .music-control-panel {
+//     @apply .w-1/2 .h-full .flex .flex-col .items-center;
+// }
+
+// .music-controls {
+//     @apply .w-1/3 .flex .justify-around .items-center .text-grey;
+// }
+
+// .music-control-button {
+//     @apply .text-grey-light .no-underline;
+    
+//     &__play {
+//         @apply .text-3xl;
+//     }
+
+//     &:hover {
+//         @apply .text-white;
+//     }
+// }
+
+// .music-progress {
+//     @apply .flex .w-full .items-center .mt-3;
+
+//     &__time {
+//         @apply .text-grey-light .text-xs .font-bold;
+//     }
+
+//     &__container {
+//         @apply .flex-1 .h-1 .w-full .bg-grey-light .rounded .mx-4;
+//     }
+
+//     &__bar {
+//         @apply .bg-grey-lighter .h-full .rounded .shadow;
+//     }
+// }

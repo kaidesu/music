@@ -1,0 +1,25 @@
+{
+    "name": "axiom-labs/music",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Shea Lewis (Kai)",
+            "email": "shea.lewis89@gmail.com"
+        }
+    ],
+    "require": {
+        "illuminate/support": "^5.7"
+    },
+    "autoload": {
+        "psr-4": {
+            "AxiomLabs\\Music\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "AxiomLabs\\Music\\AxiomMusicServiceProvider"
+            ]
+        }
+    }
+}
