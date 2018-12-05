@@ -5771,6 +5771,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -6708,54 +6717,113 @@ var staticRenderFns = [
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "row" }, [
-          _c("div", { staticClass: "w-1/6 column" }, [
-            _c("img", {
-              staticClass: "block",
-              attrs: { src: "/vendor/music/cover.jpg", alt: "Album Cover" }
-            }),
-            _vm._v(" "),
-            _c("div", { staticClass: "flex flex-col font-bold text-sm mt-4" }, [
-              _c("span", { staticClass: "text-white mb-2" }, [
-                _vm._v("The Insulated World")
-              ]),
+          _c(
+            "div",
+            {
+              staticClass: "w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/6 column"
+            },
+            [
+              _c("img", {
+                staticClass: "block",
+                attrs: { src: "/vendor/music/cover-4.jpg", alt: "Album Cover" }
+              }),
               _vm._v(" "),
-              _c("span", { staticClass: "text-grey-lighter" }, [
-                _vm._v("Dir en grey")
-              ])
-            ])
-          ]),
+              _c(
+                "div",
+                { staticClass: "flex flex-col font-bold text-sm mt-4" },
+                [
+                  _c("span", { staticClass: "text-white mb-2" }, [
+                    _vm._v("死海文書")
+                  ]),
+                  _vm._v(" "),
+                  _c("span", { staticClass: "text-grey-lighter" }, [
+                    _vm._v("R指定")
+                  ])
+                ]
+              )
+            ]
+          ),
           _vm._v(" "),
-          _c("div", { staticClass: "w-1/6 column" }, [
-            _c("img", {
-              staticClass: "block",
-              attrs: { src: "/vendor/music/cover-2.jpg", alt: "Album Cover" }
-            }),
-            _vm._v(" "),
-            _c("div", { staticClass: "flex flex-col font-bold text-sm mt-4" }, [
-              _c("span", { staticClass: "text-white mb-2" }, [
-                _vm._v("Thornstar")
-              ]),
+          _c(
+            "div",
+            {
+              staticClass: "w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/6 column"
+            },
+            [
+              _c("img", {
+                staticClass: "block",
+                attrs: { src: "/vendor/music/cover.jpg", alt: "Album Cover" }
+              }),
               _vm._v(" "),
-              _c("span", { staticClass: "text-grey-lighter" }, [
-                _vm._v("Lord of the Lost")
-              ])
-            ])
-          ]),
+              _c(
+                "div",
+                { staticClass: "flex flex-col font-bold text-sm mt-4" },
+                [
+                  _c("span", { staticClass: "text-white mb-2" }, [
+                    _vm._v("The Insulated World")
+                  ]),
+                  _vm._v(" "),
+                  _c("span", { staticClass: "text-grey-lighter" }, [
+                    _vm._v("Dir en grey")
+                  ])
+                ]
+              )
+            ]
+          ),
           _vm._v(" "),
-          _c("div", { staticClass: "w-1/6 column" }, [
-            _c("img", {
-              staticClass: "block",
-              attrs: { src: "/vendor/music/cover-3.jpg", alt: "Album Cover" }
-            }),
-            _vm._v(" "),
-            _c("div", { staticClass: "flex flex-col font-bold text-sm mt-4" }, [
-              _c("span", { staticClass: "text-white mb-2" }, [_vm._v("DOGMA")]),
+          _c(
+            "div",
+            {
+              staticClass: "w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/6 column"
+            },
+            [
+              _c("img", {
+                staticClass: "block",
+                attrs: { src: "/vendor/music/cover-2.jpg", alt: "Album Cover" }
+              }),
               _vm._v(" "),
-              _c("span", { staticClass: "text-grey-lighter" }, [
-                _vm._v("the GazettE")
-              ])
-            ])
-          ])
+              _c(
+                "div",
+                { staticClass: "flex flex-col font-bold text-sm mt-4" },
+                [
+                  _c("span", { staticClass: "text-white mb-2" }, [
+                    _vm._v("Thornstar")
+                  ]),
+                  _vm._v(" "),
+                  _c("span", { staticClass: "text-grey-lighter" }, [
+                    _vm._v("Lord of the Lost")
+                  ])
+                ]
+              )
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/6 column"
+            },
+            [
+              _c("img", {
+                staticClass: "block",
+                attrs: { src: "/vendor/music/cover-3.jpg", alt: "Album Cover" }
+              }),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "flex flex-col font-bold text-sm mt-4" },
+                [
+                  _c("span", { staticClass: "text-white mb-2" }, [
+                    _vm._v("DOGMA")
+                  ]),
+                  _vm._v(" "),
+                  _c("span", { staticClass: "text-grey-lighter" }, [
+                    _vm._v("the GazettE")
+                  ])
+                ]
+              )
+            ]
+          )
         ])
       ])
     ])

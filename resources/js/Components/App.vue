@@ -96,7 +96,16 @@
                         </div>
 
                         <div class="row">
-                            <div class="w-1/6 column">
+                            <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/6 column">
+                                <img class="block" src="/vendor/music/cover-4.jpg" alt="Album Cover">
+
+                                <div class="flex flex-col font-bold text-sm mt-4">
+                                    <span class="text-white mb-2">死海文書</span>
+                                    <span class="text-grey-lighter">R指定</span>
+                                </div>
+                            </div>
+
+                            <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/6 column">
                                 <img class="block" src="/vendor/music/cover.jpg" alt="Album Cover">
 
                                 <div class="flex flex-col font-bold text-sm mt-4">
@@ -105,7 +114,7 @@
                                 </div>
                             </div>
 
-                            <div class="w-1/6 column">
+                            <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/6 column">
                                 <img class="block" src="/vendor/music/cover-2.jpg" alt="Album Cover">
 
                                 <div class="flex flex-col font-bold text-sm mt-4">
@@ -114,7 +123,7 @@
                                 </div>
                             </div>
 
-                            <div class="w-1/6 column">
+                            <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/6 column">
                                 <img class="block" src="/vendor/music/cover-3.jpg" alt="Album Cover">
 
                                 <div class="flex flex-col font-bold text-sm mt-4">

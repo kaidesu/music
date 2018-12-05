@@ -8,7 +8,9 @@
         }
     ],
     "require": {
-        "illuminate/support": "^5.7"
+        "illuminate/support": "^5.7",
+        "james-heinrich/getid3": "^1.9",
+        "symfony/filesystem": "^4.2"
     },
     "autoload": {
         "psr-4": {

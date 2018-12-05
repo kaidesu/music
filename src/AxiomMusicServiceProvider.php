@@ -4,6 +4,7 @@ namespace AxiomLabs\Music;
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
+use AxiomLabs\Music\Console\Commands\ScanForMusic;
 
 class AxiomMusicServiceProvider extends ServiceProvider
 {
@@ -17,6 +18,7 @@ class AxiomMusicServiceProvider extends ServiceProvider
         $this->registerRoutes();
         $this->registerMigrations();
         $this->registerPublishing();
+        $this->registerCommands();
 
         $this->loadViewsFrom(__DIR__.'/../resources/views', 'music');
     }
@@ -76,6 +78,20 @@ class AxiomMusicServiceProvider extends ServiceProvider
             $this->publishes([
                 __DIR__.'/../public' => public_path('vendor/music'),
             ], 'music-assets');
+        }
+    }
+
+    /**
+     * Register the provided commands.
+     * 
+     * @return void
+     */
+    private function registerCommands()
+    {
+        if ($this->app->runningInConsole()) {
+            $this->commands([
+                ScanForMusic::class,
+            ]);
         }
     }
 }
