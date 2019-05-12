@@ -16,7 +16,7 @@ class ArtistController extends Controller
 
     public function show(Artist $artist)
     {
-        $artist->load('albums');
+        $artist->load('albums', 'albums.songs');
 
         return (new ArtistResource($artist));
     }

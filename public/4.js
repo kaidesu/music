@@ -50,6 +50,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'album',
   data: function data() {
@@ -57,9 +62,39 @@ __webpack_require__.r(__webpack_exports__);
       album: {}
     };
   },
+  computed: {
+    songs: function songs() {
+      return this.album.songs || [];
+    },
+    artist: function artist() {
+      return this.album.artist || {};
+    },
+    songCount: function songCount() {
+      var count = this.songs.length;
+
+      if (count === 1) {
+        return '1 song';
+      }
+
+      if (count > 1) {
+        return count + ' songs';
+      }
+    },
+    albumLength: function albumLength() {
+      var length = 0;
+
+      if (this.songs) {
+        this.songs.forEach(function (song) {
+          length += parseFloat(song.length);
+        });
+      }
+
+      return length;
+    }
+  },
   methods: {
-    playtime: function playtime(song) {
-      var seconds = Math.floor(song.length);
+    playtime: function playtime(length) {
+      var seconds = Math.floor(length);
       var minutes = Math.floor(seconds / 60);
       seconds = seconds - minutes * 60;
       return minutes + ':' + seconds.toString().padStart(2, 0);
@@ -115,15 +150,43 @@ var render = function() {
               "router-link",
               {
                 staticClass: "hover:underline text-white",
-                attrs: { to: "/artists/" + _vm.album.artist.id }
+                attrs: { to: "/artists/" + _vm.artist.id }
               },
-              [_vm._v(_vm._s(_vm.album.artist.name))]
+              [_vm._v(_vm._s(_vm.artist.name))]
             )
           ],
           1
         ),
         _vm._v(" "),
-        _vm._m(0),
+        _c(
+          "h3",
+          { staticClass: "text-sm mb-2" },
+          [
+            _vm.album.year ? [_vm._v(_vm._s(_vm.album.year))] : _vm._e(),
+            _vm._v(" "),
+            _vm.songCount
+              ? [
+                  _c("span", { staticClass: "mx-1" }, [_vm._v("•")]),
+                  _vm._v(" " + _vm._s(_vm.songCount))
+                ]
+              : _vm._e(),
+            _vm._v(" "),
+            _vm.albumLength
+              ? [
+                  _c("span", { staticClass: "mx-1" }, [_vm._v("•")]),
+                  _vm._v(" " + _vm._s(_vm.playtime(_vm.albumLength)))
+                ]
+              : _vm._e(),
+            _vm._v(" "),
+            _vm.album.genre
+              ? [
+                  _c("span", { staticClass: "mx-1" }, [_vm._v("•")]),
+                  _vm._v(" " + _vm._s(_vm.album.genre))
+                ]
+              : _vm._e()
+          ],
+          2
+        ),
         _vm._v(" "),
         _c(
           "button",
@@ -137,7 +200,7 @@ var render = function() {
     ]),
     _vm._v(" "),
     _c("table", { staticClass: "w-full mt-6 mb-10" }, [
-      _vm._m(1),
+      _vm._m(0),
       _vm._v(" "),
       _c(
         "tbody",
@@ -154,12 +217,12 @@ var render = function() {
                 _vm._v(_vm._s(song.track))
               ]),
               _vm._v(" "),
-              _vm._m(2, true),
+              _vm._m(1, true),
               _vm._v(" "),
               _c("td", { staticClass: "p-2" }, [_vm._v(_vm._s(song.title))]),
               _vm._v(" "),
               _c("td", { staticClass: "p-2 w-16" }, [
-                _vm._v(_vm._s(_vm.playtime(song)))
+                _vm._v(_vm._s(_vm.playtime(song.length)))
               ]),
               _vm._v(" "),
               _c("td", { staticClass: "p-2 w-16" })
@@ -172,20 +235,6 @@ var render = function() {
   ])
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("h3", { staticClass: "text-sm mb-2" }, [
-      _vm._v("2008 "),
-      _c("span", { staticClass: "mx-1" }, [_vm._v("•")]),
-      _vm._v(" 10 songs "),
-      _c("span", { staticClass: "mx-1" }, [_vm._v("•")]),
-      _vm._v(" 55 min "),
-      _c("span", { staticClass: "mx-1" }, [_vm._v("•")]),
-      _vm._v(" J-Rock")
-    ])
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement

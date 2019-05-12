@@ -58,12 +58,28 @@ class ScanForMusic extends Command
     {
         $mediaPath = config('music.media_path');
         $uploads   = $this->getUploads();
+        $found = count($uploads);
+
+        if ($found === 0) {
+            $this->info('Nothing found.');
+            return;
+        }
+
+        if ($found === 1) {
+            $this->info('Found 1 upload.');
+        }
+
+        if ($found > 1) {
+            $this->comment('Found '.count($uploads).' uploads.');
+        }
 
         foreach ($uploads as $file) {
             $extension   = $file->getExtension();
             $information = $this->getID3->analyze($file);
 
             getid3_lib::CopyTagsToComments($information);
+
+            // dd(array_keys($information['tags']['id3v2']));
 
             $tags = $information['tags']['id3v2'];
             
@@ -74,6 +90,7 @@ class ScanForMusic extends Command
             $title  = $tags['title'][0];
             $track  = sprintf("%02d", $tags['track_number'][0]);
             $year   = $tags['years'] ?? null;
+            $bitrate = round($information['bitrate'] / 1000) ?? null;
             $disc   = $tags['part_of_a_set'][0] ?? '1';
             
             $path     = "{$mediaPath}/{$artist}/{$album}";
@@ -89,12 +106,13 @@ class ScanForMusic extends Command
                 
                 $song = new Song;
                 
-                $song->title  = $title;
-                $song->track  = $track;
-                $song->disc   = $disc;
-                $song->length = $length;
-                $song->mtime  = $mtime;
-                $song->path   = $fullPath;
+                $song->title   = $this->convertEncoding($title);
+                $song->track   = $track;
+                $song->disc    = $this->convertEncoding($disc);
+                $song->length  = $length;
+                $song->mtime   = $mtime;
+                $song->bitrate = $bitrate;
+                $song->path    = $fullPath;
                 
                 $album->songs()->save($song);
             }
@@ -124,8 +142,15 @@ class ScanForMusic extends Command
     private function findOrCreateAlbum($artist, $name, $information)
     {
         if (! $album = $artist->albums()->where('name', $name)->first()) {
+            $genre = optional($information['tags']['id3v2'])['genre'][0];
+            $year  = optional($information['tags']['id3v2'])['year'][0];
+
             $album = new Album;
-            $album->name = $name;
+            
+            $album->name  = $this->convertEncoding($name);
+            $album->year  = $this->convertEncoding($year) ?? null;
+            $album->genre = $this->convertEncoding($genre) ?? null;
+            
             $album = $artist->albums()->save($album);
         }
 
@@ -143,5 +168,10 @@ class ScanForMusic extends Command
         }
 
         return $album;
+    }
+
+    protected function convertEncoding($string)
+    {
+        return mb_convert_encoding($string, 'UTF-8', 'UTF-8');
     }
 }

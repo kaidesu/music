@@ -15,12 +15,60 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'artist',
   data: function data() {
     return {
       artist: {}
     };
+  },
+  methods: {
+    playtime: function playtime(length) {
+      var seconds = Math.floor(length);
+      var minutes = Math.floor(seconds / 60);
+      seconds = seconds - minutes * 60;
+      return minutes + ':' + seconds.toString().padStart(2, 0);
+    }
   },
   beforeRouteEnter: function beforeRouteEnter(to, from, next) {
     axios.all([axios.get('/api/artists/' + to.params.id)]).then(axios.spread(function (artist) {
@@ -48,15 +96,136 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c(
-      "h1",
-      { staticClass: "font-bold text-5xl text-white leading-none mb-20" },
-      [_vm._v(_vm._s(_vm.artist.name))]
-    )
-  ])
+  return _c(
+    "div",
+    [
+      _c(
+        "h1",
+        { staticClass: "font-bold text-5xl text-white leading-none mb-20" },
+        [_vm._v(_vm._s(_vm.artist.name))]
+      ),
+      _vm._v(" "),
+      _c(
+        "h2",
+        { staticClass: "font-bold text-lg text-white leading-none mb-20" },
+        [_vm._v("Most Listened")]
+      ),
+      _vm._v(" "),
+      _c(
+        "h3",
+        {
+          staticClass:
+            "font-bold text-lg text-white leading-none mb-6 border-b border-gray-800 py-3"
+        },
+        [_vm._v("Library")]
+      ),
+      _vm._v(" "),
+      _vm._l(_vm.artist.albums, function(album) {
+        return _c("div", { key: album.id, staticClass: "mb-10" }, [
+          _c("div", { staticClass: "flex items-end" }, [
+            _c("img", {
+              staticClass: "h-full rounded-lg mr-6",
+              staticStyle: { width: "175px", "max-height": "175px" },
+              attrs: { src: "/" + album.cover, alt: album.name }
+            }),
+            _vm._v(" "),
+            _c("div", [
+              _c(
+                "span",
+                {
+                  staticClass:
+                    "text-xs uppercase block tracking-widest font-semibold mb-1"
+                },
+                [_vm._v(_vm._s(album.year))]
+              ),
+              _vm._v(" "),
+              _c(
+                "h1",
+                {
+                  staticClass: "font-bold text-3xl text-white leading-none mb-3"
+                },
+                [_vm._v(_vm._s(album.name))]
+              )
+            ])
+          ]),
+          _vm._v(" "),
+          _c("table", { staticClass: "w-full mt-6 mb-10" }, [
+            _vm._m(0, true),
+            _vm._v(" "),
+            _c(
+              "tbody",
+              { staticClass: "text-sm tracking-wide" },
+              _vm._l(album.songs, function(song) {
+                return _c(
+                  "tr",
+                  {
+                    key: song.id,
+                    staticClass: "border-b border-gray-800 hover:bg-gray-700"
+                  },
+                  [
+                    _c("td", { staticClass: "p-2 w-10" }, [
+                      _vm._v(_vm._s(song.track))
+                    ]),
+                    _vm._v(" "),
+                    _vm._m(1, true),
+                    _vm._v(" "),
+                    _c("td", { staticClass: "p-2" }, [
+                      _vm._v(_vm._s(song.title))
+                    ]),
+                    _vm._v(" "),
+                    _c("td", { staticClass: "p-2 w-16" }, [
+                      _vm._v(_vm._s(_vm.playtime(song.length)))
+                    ]),
+                    _vm._v(" "),
+                    _c("td", { staticClass: "p-2 w-16" })
+                  ]
+                )
+              }),
+              0
+            )
+          ])
+        ])
+      })
+    ],
+    2
+  )
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", { staticClass: "text-xs uppercase text-left" }, [
+      _c("tr", { staticClass: "border-b border-gray-800 text-gray-600" }, [
+        _c("th", { staticClass: "p-2 w-10" }, [_vm._v("#")]),
+        _vm._v(" "),
+        _c("th", { staticClass: "p-2 w-10" }),
+        _vm._v(" "),
+        _c("th", { staticClass: "p-2" }, [_vm._v("Title")]),
+        _vm._v(" "),
+        _c("th", { staticClass: "p-2 w-16" }, [
+          _c("i", { staticClass: "far fa-clock" })
+        ]),
+        _vm._v(" "),
+        _c("th", { staticClass: "p-2 w-16" }, [
+          _c("i", { staticClass: "fas fa-music" })
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", { staticClass: "p-2 w-10" }, [
+      _c("a", { attrs: { href: "#" } }, [
+        _c("i", {
+          staticClass: "fas fa-play-circle hover:text-axiom-500 text-gray-600"
+        })
+      ])
+    ])
+  }
+]
 render._withStripped = true
 
 

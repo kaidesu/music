@@ -20,6 +20,8 @@ class CreateSongsTable extends Migration
             $table->integer('track');
             $table->integer('disc');
             $table->float('length');
+            $table->integer('bitrate')->nullable();
+            $table->boolean('explicit')->default(false);
             $table->text('path');
             $table->integer('mtime');
             $table->timestamps();
