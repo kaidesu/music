@@ -17,5 +17,6 @@ Route::get('/songs', 'API\SongController@index');
 Route::get('/songs/recently-added', 'API\RecentlyAddedController@index');
 
 Route::get('/artists', 'API\ArtistController@index');
+
 Route::get('/albums', 'API\AlbumController@index');
 Route::get('/albums/{album}', 'API\AlbumController@show');

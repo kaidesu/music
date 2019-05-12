@@ -11,7 +11,12 @@ class RecentlyAddedController extends Controller
 {
     public function index()
     {
-        $songs = Song::orderBy('created_at', 'desc')->limit(100)->get();
+        $songs = Song::orderBy('album_id', 'desc')
+            ->orderBy('track')
+            ->orderBy('created_at', 'desc')
+            ->limit(100)
+            ->with('album')
+            ->get();
 
         return SongResource::collection($songs);
     }

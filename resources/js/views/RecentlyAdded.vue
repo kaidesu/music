@@ -4,24 +4,28 @@
 
         <table class="w-full mb-10">
             <thead class="text-xs uppercase text-left">
-                <tr class="border-b border-gray-700 text-gray-600">
-                    <th class="p-1"></th>
-                    <th>Title</th>
-                    <th>Artist</th>
-                    <th>Album</th>
-                    <th><i class="far fa-clock"></i></th>
+                <tr class="border-b border-gray-800 text-gray-600">
+                    <th class="p-2 w-10">#</th>
+                    <th class="p-2 w-10"></th>
+                    <th class="p-2">Title</th>
+                    <th class="p-2">Artist</th>
+                    <th class="p-2">Album</th>
+                    <th class="p-2 w-10"><i class="far fa-clock"></i></th>
+                    <th class="p-2 w-10"><i class="fas fa-music"></i></th>
                 </tr>
             </thead>
-            <tbody class="text-sm">
-                <tr v-for="song in songs" :key="song.id" class="border-b border-gray-700 hover:bg-gray-700">
-                    <td class="px-3 w-20 text-xl text-gray-600">
-                        <!-- <i v-if="selected.id == song.id" class="fas fa-compact-disc fa-spin text-axiom-500"></i>
-                        <a v-else href="#" @click.prevent="play(song)"><i class="fas fa-play-circle hover:text-axiom-500"></i></a> -->
+            <tbody class="text-sm tracking-wide">
+                <tr v-for="song in songs" :key="song.id" class="border-b border-gray-800 hover:bg-gray-700">
+                    <td class="p-2 w-10">{{ song.track }}</td>
+                    <td class="p-2 w-10">
+                        <!-- <i class="fas fa-compact-disc fa-spin text-axiom-500"></i> -->
+                        <a href="#"><i class="fas fa-play-circle hover:text-axiom-500 text-gray-600"></i></a>
                     </td>
-                    <td>{{ song.title }}</td>
-                    <td>{{ song.artist.name }}</td>
-                    <td>{{ song.album.name }}</td>
-                    <td class="tracking-wide text-sm">{{ playtime(song) }}</td>
+                    <td class="p-2">{{ song.title }}</td>
+                    <td class="p-2">{{ song.artist.name }}</td>
+                    <td class="p-2">{{ song.album.name }}</td>
+                    <td class="p-2 w-16">{{ playtime(song) }}</td>
+                    <td class="p-2 w-16"></td>
                 </tr>
             </tbody>
         </table>

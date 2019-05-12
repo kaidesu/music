@@ -39,6 +39,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'recently-added',
   data: function data() {
@@ -92,26 +96,36 @@ var render = function() {
       _vm._v(" "),
       _c(
         "tbody",
-        { staticClass: "text-sm" },
+        { staticClass: "text-sm tracking-wide" },
         _vm._l(_vm.songs, function(song) {
           return _c(
             "tr",
             {
               key: song.id,
-              staticClass: "border-b border-gray-700 hover:bg-gray-700"
+              staticClass: "border-b border-gray-800 hover:bg-gray-700"
             },
             [
-              _c("td", { staticClass: "px-3 w-20 text-xl text-gray-600" }),
+              _c("td", { staticClass: "p-2 w-10" }, [
+                _vm._v(_vm._s(song.track))
+              ]),
               _vm._v(" "),
-              _c("td", [_vm._v(_vm._s(song.title))]),
+              _vm._m(1, true),
               _vm._v(" "),
-              _c("td", [_vm._v(_vm._s(song.artist.name))]),
+              _c("td", { staticClass: "p-2" }, [_vm._v(_vm._s(song.title))]),
               _vm._v(" "),
-              _c("td", [_vm._v(_vm._s(song.album.name))]),
+              _c("td", { staticClass: "p-2" }, [
+                _vm._v(_vm._s(song.artist.name))
+              ]),
               _vm._v(" "),
-              _c("td", { staticClass: "tracking-wide text-sm" }, [
+              _c("td", { staticClass: "p-2" }, [
+                _vm._v(_vm._s(song.album.name))
+              ]),
+              _vm._v(" "),
+              _c("td", { staticClass: "p-2 w-16" }, [
                 _vm._v(_vm._s(_vm.playtime(song)))
-              ])
+              ]),
+              _vm._v(" "),
+              _c("td", { staticClass: "p-2 w-16" })
             ]
           )
         }),
@@ -126,16 +140,36 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("thead", { staticClass: "text-xs uppercase text-left" }, [
-      _c("tr", { staticClass: "border-b border-gray-700 text-gray-600" }, [
-        _c("th", { staticClass: "p-1" }),
+      _c("tr", { staticClass: "border-b border-gray-800 text-gray-600" }, [
+        _c("th", { staticClass: "p-2 w-10" }, [_vm._v("#")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Title")]),
+        _c("th", { staticClass: "p-2 w-10" }),
         _vm._v(" "),
-        _c("th", [_vm._v("Artist")]),
+        _c("th", { staticClass: "p-2" }, [_vm._v("Title")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Album")]),
+        _c("th", { staticClass: "p-2" }, [_vm._v("Artist")]),
         _vm._v(" "),
-        _c("th", [_c("i", { staticClass: "far fa-clock" })])
+        _c("th", { staticClass: "p-2" }, [_vm._v("Album")]),
+        _vm._v(" "),
+        _c("th", { staticClass: "p-2 w-10" }, [
+          _c("i", { staticClass: "far fa-clock" })
+        ]),
+        _vm._v(" "),
+        _c("th", { staticClass: "p-2 w-10" }, [
+          _c("i", { staticClass: "fas fa-music" })
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", { staticClass: "p-2 w-10" }, [
+      _c("a", { attrs: { href: "#" } }, [
+        _c("i", {
+          staticClass: "fas fa-play-circle hover:text-axiom-500 text-gray-600"
+        })
       ])
     ])
   }
