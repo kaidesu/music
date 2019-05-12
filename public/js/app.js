@@ -18799,6 +18799,12 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_0__["default"]({
     },
     name: 'artists'
   }, {
+    path: '/artists/:id',
+    component: function component() {
+      return __webpack_require__.e(/*! import() */ 5).then(__webpack_require__.bind(null, /*! ../views/Artists/Show */ "./resources/js/views/Artists/Show.vue"));
+    },
+    name: 'artist'
+  }, {
     path: '/albums',
     component: function component() {
       return __webpack_require__.e(/*! import() */ 3).then(__webpack_require__.bind(null, /*! ../views/Albums/Index */ "./resources/js/views/Albums/Index.vue"));
@@ -18809,7 +18815,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_0__["default"]({
     component: function component() {
       return __webpack_require__.e(/*! import() */ 4).then(__webpack_require__.bind(null, /*! ../views/Albums/Show */ "./resources/js/views/Albums/Show.vue"));
     },
-    name: 'albums-show'
+    name: 'album'
   }]
 });
 /* harmony default export */ __webpack_exports__["default"] = (router);

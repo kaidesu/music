@@ -51,7 +51,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'album-show',
+  name: 'album',
   data: function data() {
     return {
       album: {}
@@ -106,14 +106,22 @@ var render = function() {
           [_vm._v(_vm._s(_vm.album.name))]
         ),
         _vm._v(" "),
-        _c("h2", { staticClass: "text-sm" }, [
-          _vm._v("By "),
-          _c(
-            "a",
-            { staticClass: "hover:underline text-white", attrs: { href: "#" } },
-            [_vm._v(_vm._s(_vm.album.artist.name))]
-          )
-        ]),
+        _c(
+          "h2",
+          { staticClass: "text-sm" },
+          [
+            _vm._v("By "),
+            _c(
+              "router-link",
+              {
+                staticClass: "hover:underline text-white",
+                attrs: { to: "/artists/" + _vm.album.artist.id }
+              },
+              [_vm._v(_vm._s(_vm.album.artist.name))]
+            )
+          ],
+          1
+        ),
         _vm._v(" "),
         _vm._m(0),
         _vm._v(" "),

@@ -27,7 +27,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'artists',
   data: function data() {
@@ -74,10 +73,7 @@ var render = function() {
       _vm._l(_vm.artists, function(artist) {
         return _c(
           "div",
-          {
-            key: artist.id,
-            staticClass: "text-sm px-3 mb-8 w-1/2 md:w-1/3 lg:w-1/6"
-          },
+          { key: artist.id, staticClass: "text-sm px-3 mb-8 w-full md:w-1/3" },
           [
             _c(
               "router-link",
@@ -87,11 +83,10 @@ var render = function() {
                 attrs: { to: "/artists/" + artist.id }
               },
               [
-                _c(
-                  "div",
-                  { staticClass: "rounded w-full h-auto bg-gray-1000" },
-                  [_vm._v("\n                    p\n                    ")]
-                )
+                _c("div", {
+                  staticClass: "rounded w-full bg-gray-1000 block",
+                  staticStyle: { height: "220px" }
+                })
               ]
             ),
             _vm._v(" "),

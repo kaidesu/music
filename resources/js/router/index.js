@@ -26,6 +26,12 @@ const router = new Router({
         },
 
         {
+            path: '/artists/:id',
+            component: () => import('../views/Artists/Show'),
+            name: 'artist',
+        },
+
+        {
             path: '/albums',
             component: () => import('../views/Albums/Index'),
             name: 'albums',
@@ -34,7 +40,7 @@ const router = new Router({
         {
             path: '/albums/:id',
             component: () => import('../views/Albums/Show'),
-            name: 'albums-show',
+            name: 'album',
         },
     ]
 })

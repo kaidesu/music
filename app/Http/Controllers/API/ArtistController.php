@@ -11,6 +11,13 @@ class ArtistController extends Controller
 {
     public function index()
     {
-        return ArtistResource::collection(Artist::with('albums')->get());
+        return ArtistResource::collection(Artist::with('albums')->orderBy('name')->get());
+    }
+
+    public function show(Artist $artist)
+    {
+        $artist->load('albums');
+
+        return (new ArtistResource($artist));
     }
 }

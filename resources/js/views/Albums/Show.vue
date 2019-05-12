@@ -6,7 +6,7 @@
             <div>
                 <!-- <span class="text-xs uppercase block tracking-widest font-semibold mb-1">Album</span> -->
                 <h1 class="font-bold text-5xl text-white leading-none mb-3">{{ album.name }}</h1>
-                <h2 class="text-sm">By <a href="#" class="hover:underline text-white">{{ album.artist.name }}</a></h2>
+                <h2 class="text-sm">By <router-link :to="'/artists/' + album.artist.id" class="hover:underline text-white">{{ album.artist.name }}</router-link></h2>
                 <h3 class="text-sm mb-2">2008 <span class="mx-1">•</span> 10 songs <span class="mx-1">•</span> 55 min <span class="mx-1">•</span> J-Rock</h3>
                 <button class="px-10 py-2 mt-3 hover:bg-axiom-600 hover:shadow-lg leading-none bg-axiom-500 text-white text-xs tracking-widest uppercase font-bold rounded-full">Play</button>
             </div>
@@ -41,7 +41,7 @@
 
 <script>
     export default {
-        name: 'album-show',
+        name: 'album',
 
         data() {
             return {
