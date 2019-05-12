@@ -1,0 +1,31 @@
+.sidebar {
+    @apply .bg-gray-800 .h-full .overflow-auto .flex .flex-col;
+
+    &__container {
+        @apply .flex-1 .-mr-4;
+    }
+
+    &__nav {
+        // 
+    }
+
+    &__item {
+        @apply .py-1;
+    }
+
+    &__label {
+        @apply .px-4 .py-1 .my-3 .border-l-4 .border-transparent .text-gray-400 .text-xs .uppercase .tracking-widest;
+    }
+
+    &__link {
+        @apply .block .font-semibold .px-4 .py-1 .border-l-4 .border-transparent .no-underline .text-gray-200 .text-sm .tracking-wider;
+
+        &:hover {
+            @apply .text-white;
+        }
+
+        &.router-link-exact-active {
+            @apply .border-axiom-500;
+        }
+    }
+}
