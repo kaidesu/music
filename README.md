@@ -7,6 +7,10 @@ Self-hosted personal music server built using web technologies. Upload your audi
     <img src="_github/screenshot.png">
 </p>
 
+<p align="center">
+    <img src="_github/now_playing.gif">
+</p>
+
 ## Technology Stack
 - Laravel
 - Vue
