@@ -17,30 +17,9 @@
             </div>
         </div>
 
-        <table class="w-full mt-6 mb-10">
-            <thead class="text-xs uppercase text-left">
-                <tr class="border-b border-gray-800 text-gray-600">
-                    <th class="p-2 w-10">#</th>
-                    <th class="p-2 w-10"></th>
-                    <th class="p-2">Title</th>
-                    <th class="p-2 w-16"><i class="far fa-clock"></i></th>
-                    <th class="p-2 w-16"><i class="fas fa-music"></i></th>
-                </tr>
-            </thead>
-
-            <tbody class="text-sm tracking-wide">
-                <tr v-for="song in album.songs" :key="song.id" class="border-b border-gray-800 hover:bg-gray-700">
-                    <td class="p-2 w-10">{{ song.track }}</td>
-                    <td class="p-2 w-10">
-                        <!-- <i class="fas fa-compact-disc fa-spin text-axiom-500"></i> -->
-                        <a href="#"><i class="fas fa-play-circle hover:text-axiom-500 text-gray-600"></i></a>
-                    </td>
-                    <td class="p-2">{{ song.title }}</td>
-                    <td class="p-2 w-16">{{ playtime(song.length) }}</td>
-                    <td class="p-2 w-16"></td>
-                </tr>
-            </tbody>
-        </table>
+        <app-queue>
+            <app-playlist :songs="album.songs"></app-playlist>
+        </app-queue>
     </div>
 </template>
 

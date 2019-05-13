@@ -34,27 +34,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'album',
   data: function data() {
@@ -126,150 +105,91 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c("div", { staticClass: "flex items-end" }, [
-      _c("img", {
-        staticClass: "h-full rounded-lg mr-6",
-        staticStyle: { width: "220px", "max-height": "220px" },
-        attrs: { src: "/" + _vm.album.cover, alt: _vm.album.name }
-      }),
-      _vm._v(" "),
-      _c("div", [
-        _c(
-          "h1",
-          { staticClass: "font-bold text-5xl text-white leading-none mb-3" },
-          [_vm._v(_vm._s(_vm.album.name))]
-        ),
+  return _c(
+    "div",
+    [
+      _c("div", { staticClass: "flex items-end" }, [
+        _c("img", {
+          staticClass: "h-full rounded-lg mr-6",
+          staticStyle: { width: "220px", "max-height": "220px" },
+          attrs: { src: "/" + _vm.album.cover, alt: _vm.album.name }
+        }),
         _vm._v(" "),
-        _c(
-          "h2",
-          { staticClass: "text-sm" },
-          [
-            _vm._v("By "),
-            _c(
-              "router-link",
-              {
-                staticClass: "hover:underline text-white",
-                attrs: { to: "/artists/" + _vm.artist.id }
-              },
-              [_vm._v(_vm._s(_vm.artist.name))]
-            )
-          ],
-          1
-        ),
-        _vm._v(" "),
-        _c(
-          "h3",
-          { staticClass: "text-sm mb-2" },
-          [
-            _vm.album.year ? [_vm._v(_vm._s(_vm.album.year))] : _vm._e(),
-            _vm._v(" "),
-            _vm.songCount
-              ? [
-                  _c("span", { staticClass: "mx-1" }, [_vm._v("•")]),
-                  _vm._v(" " + _vm._s(_vm.songCount))
-                ]
-              : _vm._e(),
-            _vm._v(" "),
-            _vm.albumLength
-              ? [
-                  _c("span", { staticClass: "mx-1" }, [_vm._v("•")]),
-                  _vm._v(" " + _vm._s(_vm.playtime(_vm.albumLength)))
-                ]
-              : _vm._e(),
-            _vm._v(" "),
-            _vm.album.genre
-              ? [
-                  _c("span", { staticClass: "mx-1" }, [_vm._v("•")]),
-                  _vm._v(" " + _vm._s(_vm.album.genre))
-                ]
-              : _vm._e()
-          ],
-          2
-        ),
-        _vm._v(" "),
-        _c(
-          "button",
-          {
-            staticClass:
-              "px-10 py-2 mt-3 hover:bg-axiom-600 hover:shadow-lg leading-none bg-axiom-500 text-white text-xs tracking-widest uppercase font-bold rounded-full"
-          },
-          [_vm._v("Play")]
-        )
-      ])
-    ]),
-    _vm._v(" "),
-    _c("table", { staticClass: "w-full mt-6 mb-10" }, [
-      _vm._m(0),
+        _c("div", [
+          _c(
+            "h1",
+            { staticClass: "font-bold text-5xl text-white leading-none mb-3" },
+            [_vm._v(_vm._s(_vm.album.name))]
+          ),
+          _vm._v(" "),
+          _c(
+            "h2",
+            { staticClass: "text-sm" },
+            [
+              _vm._v("By "),
+              _c(
+                "router-link",
+                {
+                  staticClass: "hover:underline text-white",
+                  attrs: { to: "/artists/" + _vm.artist.id }
+                },
+                [_vm._v(_vm._s(_vm.artist.name))]
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "h3",
+            { staticClass: "text-sm mb-2" },
+            [
+              _vm.album.year ? [_vm._v(_vm._s(_vm.album.year))] : _vm._e(),
+              _vm._v(" "),
+              _vm.songCount
+                ? [
+                    _c("span", { staticClass: "mx-1" }, [_vm._v("•")]),
+                    _vm._v(" " + _vm._s(_vm.songCount))
+                  ]
+                : _vm._e(),
+              _vm._v(" "),
+              _vm.albumLength
+                ? [
+                    _c("span", { staticClass: "mx-1" }, [_vm._v("•")]),
+                    _vm._v(" " + _vm._s(_vm.playtime(_vm.albumLength)))
+                  ]
+                : _vm._e(),
+              _vm._v(" "),
+              _vm.album.genre
+                ? [
+                    _c("span", { staticClass: "mx-1" }, [_vm._v("•")]),
+                    _vm._v(" " + _vm._s(_vm.album.genre))
+                  ]
+                : _vm._e()
+            ],
+            2
+          ),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              staticClass:
+                "px-10 py-2 mt-3 hover:bg-axiom-600 hover:shadow-lg leading-none bg-axiom-500 text-white text-xs tracking-widest uppercase font-bold rounded-full"
+            },
+            [_vm._v("Play")]
+          )
+        ])
+      ]),
       _vm._v(" "),
       _c(
-        "tbody",
-        { staticClass: "text-sm tracking-wide" },
-        _vm._l(_vm.album.songs, function(song) {
-          return _c(
-            "tr",
-            {
-              key: song.id,
-              staticClass: "border-b border-gray-800 hover:bg-gray-700"
-            },
-            [
-              _c("td", { staticClass: "p-2 w-10" }, [
-                _vm._v(_vm._s(song.track))
-              ]),
-              _vm._v(" "),
-              _vm._m(1, true),
-              _vm._v(" "),
-              _c("td", { staticClass: "p-2" }, [_vm._v(_vm._s(song.title))]),
-              _vm._v(" "),
-              _c("td", { staticClass: "p-2 w-16" }, [
-                _vm._v(_vm._s(_vm.playtime(song.length)))
-              ]),
-              _vm._v(" "),
-              _c("td", { staticClass: "p-2 w-16" })
-            ]
-          )
-        }),
-        0
+        "app-queue",
+        [_c("app-playlist", { attrs: { songs: _vm.album.songs } })],
+        1
       )
-    ])
-  ])
+    ],
+    1
+  )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("thead", { staticClass: "text-xs uppercase text-left" }, [
-      _c("tr", { staticClass: "border-b border-gray-800 text-gray-600" }, [
-        _c("th", { staticClass: "p-2 w-10" }, [_vm._v("#")]),
-        _vm._v(" "),
-        _c("th", { staticClass: "p-2 w-10" }),
-        _vm._v(" "),
-        _c("th", { staticClass: "p-2" }, [_vm._v("Title")]),
-        _vm._v(" "),
-        _c("th", { staticClass: "p-2 w-16" }, [
-          _c("i", { staticClass: "far fa-clock" })
-        ]),
-        _vm._v(" "),
-        _c("th", { staticClass: "p-2 w-16" }, [
-          _c("i", { staticClass: "fas fa-music" })
-        ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("td", { staticClass: "p-2 w-10" }, [
-      _c("a", { attrs: { href: "#" } }, [
-        _c("i", {
-          staticClass: "fas fa-play-circle hover:text-axiom-500 text-gray-600"
-        })
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 

@@ -9,6 +9,11 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 //
 //
 //
@@ -21,28 +26,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'recently-added',
   data: function data() {
@@ -50,14 +34,14 @@ __webpack_require__.r(__webpack_exports__);
       songs: []
     };
   },
-  methods: {
+  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])('player', ['setSource']), {
     playtime: function playtime(song) {
       var seconds = Math.floor(song.length);
       var minutes = Math.floor(seconds / 60);
       seconds = seconds - minutes * 60;
       return minutes + ':' + seconds.toString().padStart(2, 0);
     }
-  },
+  }),
   beforeRouteEnter: function beforeRouteEnter(to, from, next) {
     axios.all([axios.get('/api/songs/recently-added')]).then(axios.spread(function (recentlyAdded) {
       next(function (vm) {
@@ -84,96 +68,23 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c(
-      "h1",
-      { staticClass: "font-bold text-5xl text-white leading-none mb-20" },
-      [_vm._v("Recently Added")]
-    ),
-    _vm._v(" "),
-    _c("table", { staticClass: "w-full mb-10" }, [
-      _vm._m(0),
-      _vm._v(" "),
+  return _c(
+    "div",
+    [
       _c(
-        "tbody",
-        { staticClass: "text-sm tracking-wide" },
-        _vm._l(_vm.songs, function(song) {
-          return _c(
-            "tr",
-            {
-              key: song.id,
-              staticClass: "border-b border-gray-800 hover:bg-gray-700"
-            },
-            [
-              _c("td", { staticClass: "p-2 w-10" }, [
-                _vm._v(_vm._s(song.track))
-              ]),
-              _vm._v(" "),
-              _vm._m(1, true),
-              _vm._v(" "),
-              _c("td", { staticClass: "p-2" }, [_vm._v(_vm._s(song.title))]),
-              _vm._v(" "),
-              _c("td", { staticClass: "p-2" }, [
-                _vm._v(_vm._s(song.artist.name))
-              ]),
-              _vm._v(" "),
-              _c("td", { staticClass: "p-2" }, [
-                _vm._v(_vm._s(song.album.name))
-              ]),
-              _vm._v(" "),
-              _c("td", { staticClass: "p-2 w-16" }, [
-                _vm._v(_vm._s(_vm.playtime(song)))
-              ]),
-              _vm._v(" "),
-              _c("td", { staticClass: "p-2 w-16" })
-            ]
-          )
-        }),
-        0
-      )
-    ])
-  ])
+        "h1",
+        { staticClass: "font-bold text-5xl text-white leading-none mb-20" },
+        [_vm._v("Recently Added")]
+      ),
+      _vm._v(" "),
+      _c("app-playlist", {
+        attrs: { songs: _vm.songs, "display-artist": "", "display-album": "" }
+      })
+    ],
+    1
+  )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("thead", { staticClass: "text-xs uppercase text-left" }, [
-      _c("tr", { staticClass: "border-b border-gray-800 text-gray-600" }, [
-        _c("th", { staticClass: "p-2 w-10" }, [_vm._v("#")]),
-        _vm._v(" "),
-        _c("th", { staticClass: "p-2 w-10" }),
-        _vm._v(" "),
-        _c("th", { staticClass: "p-2" }, [_vm._v("Title")]),
-        _vm._v(" "),
-        _c("th", { staticClass: "p-2" }, [_vm._v("Artist")]),
-        _vm._v(" "),
-        _c("th", { staticClass: "p-2" }, [_vm._v("Album")]),
-        _vm._v(" "),
-        _c("th", { staticClass: "p-2 w-10" }, [
-          _c("i", { staticClass: "far fa-clock" })
-        ]),
-        _vm._v(" "),
-        _c("th", { staticClass: "p-2 w-10" }, [
-          _c("i", { staticClass: "fas fa-music" })
-        ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("td", { staticClass: "p-2 w-10" }, [
-      _c("a", { attrs: { href: "#" } }, [
-        _c("i", {
-          staticClass: "fas fa-play-circle hover:text-axiom-500 text-gray-600"
-        })
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
