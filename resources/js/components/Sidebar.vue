@@ -46,9 +46,7 @@
             </ul>
         </div>
 
-        <div>
-            <img class="block" src="/img/cover.jpg" style="max-width: 100%; max-height: 100%;">
-        </div>
+        <app-cover></app-cover>
     </div>
 </template>
 
