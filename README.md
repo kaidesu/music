@@ -29,6 +29,8 @@ Self-hosted personal music server built using web technologies. Upload your audi
 - [ ] Manage metadata for artists, albums, and songs
 - [ ] Installer
 - [ ] Configurable media storage (local, s3, etc.)
+- [ ] PWA
+- [ ] Offline-first
 
 ## Installing
 1. `composer install`
