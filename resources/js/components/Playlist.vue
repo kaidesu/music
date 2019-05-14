@@ -12,25 +12,12 @@
             </tr>
         </thead>
         <tbody class="text-sm tracking-wide">
-            <tr v-for="song in songs" :key="song.id" class="border-b border-gray-800 hover:bg-gray-700">
-                <td class="p-2 w-10">{{ song.track }}</td>
-                <td class="p-2 w-10">
-                    <i v-if="isCurrentlyPlaying(song)" class="fas fa-compact-disc fa-spin text-axiom-500"></i>
-                    <a v-else href="#" @click.prevent="setSong(song)"><i class="fas fa-play-circle hover:text-axiom-500 text-gray-600"></i></a>
-                </td>
-                <td class="p-2">{{ song.title }}</td>
-                <td class="p-2" v-if="displayArtist">{{ song.artist.name }}</td>
-                <td class="p-2" v-if="displayAlbum">{{ song.album.name }}</td>
-                <td class="p-2 w-16">{{ playtime(song.length) }}</td>
-                <td class="p-2 w-16"></td>
-            </tr>
+            <app-track v-for="song in songs" :key="song.id" :song="song" :displayArtist="displayArtist" :displayAlbum="displayAlbum"></app-track>
         </tbody>
     </table>
 </template>
 
 <script>
-    import { mapActions, mapGetters } from 'vuex'
-
     export default {
         name: 'playlist',
 
@@ -48,43 +35,6 @@
                 required: false,
                 default: false
             },
-        },
-
-        computed: {
-            ...mapGetters('player', [
-                'song'
-            ]),
-        },
-
-        watch: {
-            songs(songs) {
-                console.log('emitting')
-                this.$emit('add-songs', songs)
-            },
-        },
-
-        methods: {
-            ...mapActions('player', [
-                'setSong',
-                'play'
-            ]),
-
-            playtime(length) {
-                let seconds = Math.floor(length)
-                let minutes = Math.floor(seconds / 60)
-
-                seconds = seconds - (minutes * 60)
-
-                return minutes + ':' + (seconds.toString().padStart(2, 0))
-            },
-
-            isCurrentlyPlaying(song) {
-                if (! this.song) {
-                    return false
-                }
-
-                return this.song.id === song.id
-            }
         },
     }
 </script>

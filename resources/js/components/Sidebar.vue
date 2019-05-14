@@ -3,7 +3,7 @@
         <div class="sidebar__container">
             <ul class="sidebar__nav">
                 <li class="sidebar__item">
-                    <router-link exact to="/" class="sidebar__link mt-8">
+                    <router-link tag="button" exact to="/" class="sidebar__link mt-8">
                         Browse
                     </router-link>
                 </li>
@@ -15,27 +15,21 @@
                 </li>
 
                 <li class="sidebar__item">
-                    <router-link to="/recently-added" class="sidebar__link">
+                    <router-link tag="button" to="/recently-added" class="sidebar__link">
                         Recently Added
                     </router-link>
                 </li>
 
                 <li class="sidebar__item">
-                    <router-link to="/artists" class="sidebar__link">
+                    <router-link tag="button" to="/artists" class="sidebar__link">
                         Artists
                     </router-link>
                 </li>
 
                 <li class="sidebar__item">
-                    <router-link to="/albums" class="sidebar__link">
+                    <router-link tag="button" to="/albums" class="sidebar__link">
                         Albums
                     </router-link>
-                </li>
-
-                <li class="sidebar__item">
-                    <a href="#" class="sidebar__link">
-                        Songs
-                    </a>
                 </li>
             </ul>
 

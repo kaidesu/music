@@ -130,8 +130,8 @@ var render = function() {
               _c(
                 "router-link",
                 {
-                  staticClass: "hover:underline text-white",
-                  attrs: { to: "/artists/" + _vm.artist.id }
+                  staticClass: "hover:underline text-white focus:outline-none",
+                  attrs: { tag: "button", to: "/artists/" + _vm.artist.id }
                 },
                 [_vm._v(_vm._s(_vm.artist.name))]
               )

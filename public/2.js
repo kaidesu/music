@@ -79,12 +79,12 @@ var render = function() {
               "router-link",
               {
                 staticClass:
-                  "block h-auto w-full rounded mb-2 hover:shadow-lg border-2 border-transparent hover:border-gray-500",
-                attrs: { to: "/artists/" + artist.id }
+                  "block h-auto w-full rounded mb-2 hover:shadow-lg border-2 border-transparent hover:border-gray-500 focus:outline-none",
+                attrs: { tag: "button", to: "/artists/" + artist.id }
               },
               [
                 _c("div", {
-                  staticClass: "rounded w-full bg-gray-1000 block",
+                  staticClass: "rounded w-full bg-dark block",
                   staticStyle: { height: "220px" }
                 })
               ]
@@ -97,8 +97,8 @@ var render = function() {
                   "router-link",
                   {
                     staticClass:
-                      "text-gray-500 hover:underline font-bold leading-loose",
-                    attrs: { to: "/artists/" + artist.id }
+                      "text-gray-500 hover:underline font-bold leading-loose focus:outline-none",
+                    attrs: { tag: "button", to: "/artists/" + artist.id }
                   },
                   [_vm._v(_vm._s(artist.name))]
                 )

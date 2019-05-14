@@ -1955,31 +1955,33 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'app-player',
-  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapGetters"])('player', ['player', 'source'])),
+  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapGetters"])('player', ['player', 'source', 'song'])),
   watch: {
     source: function source(value) {
       this.play();
     }
   },
   mounted: function mounted() {
-    var player = new plyr__WEBPACK_IMPORTED_MODULE_0___default.a(this.$el.firstChild, this.opts);
+    var player = new plyr__WEBPACK_IMPORTED_MODULE_0___default.a(this.$refs.player, this.opts);
     this.initialize(player);
   },
   methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapActions"])('player', {
     initialize: 'initialize',
     play: 'play'
-  })) // beforeDestroy() {
-  //     try {
-  //         this.player.destroy()
-  //     } catch (e) {
-  //         // 
-  //     }
-  // },
-
+  }))
 });
 
 /***/ }),
@@ -1993,11 +1995,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 //
 //
 //
@@ -2017,18 +2014,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'playlist',
   props: {
@@ -2045,29 +2030,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       required: false,
       "default": false
     }
-  },
-  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])('player', ['song'])),
-  watch: {
-    songs: function songs(_songs) {
-      console.log('emitting');
-      this.$emit('add-songs', _songs);
-    }
-  },
-  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])('player', ['setSong', 'play']), {
-    playtime: function playtime(length) {
-      var seconds = Math.floor(length);
-      var minutes = Math.floor(seconds / 60);
-      seconds = seconds - minutes * 60;
-      return minutes + ':' + seconds.toString().padStart(2, 0);
-    },
-    isCurrentlyPlaying: function isCurrentlyPlaying(song) {
-      if (!this.song) {
-        return false;
-      }
-
-      return this.song.id === song.id;
-    }
-  })
+  }
 });
 
 /***/ }),
@@ -2161,12 +2124,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'app-sidebar',
   data: function data() {
@@ -2178,109 +2135,72 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/plyr/dist/plyr.css?vue&type=style&index=0&lang=css&":
-/*!*******************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/plyr/dist/plyr.css?vue&type=style&index=0&lang=css& ***!
-  \*******************************************************************************************************************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Track.vue?vue&type=script&lang=js&":
+/*!****************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Track.vue?vue&type=script&lang=js& ***!
+  \****************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(/*! ../../css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
-// imports
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-// module
-exports.push([module.i, "@keyframes plyr-progress{\nto{\n    background-position:25px 0\n}\n}\n@keyframes plyr-popup{\n0%{\n    opacity:.5;\n    transform:translateY(10px)\n}\nto{\n    opacity:1;\n    transform:translateY(0)\n}\n}\n@keyframes plyr-fade-in{\nfrom{\n    opacity:0\n}\nto{\n    opacity:1\n}\n}\n.plyr{\n  -moz-osx-font-smoothing:auto;\n  -webkit-font-smoothing:subpixel-antialiased;\n  direction:ltr;\n  font-family:Avenir,\"Avenir Next\",\"Helvetica Neue\",\"Segoe UI\",Helvetica,Arial,sans-serif;\n  font-variant-numeric:tabular-nums;\n  font-weight:500;\n  line-height:1.7;\n  max-width:100%;\n  min-width:200px;\n  position:relative;\n  text-shadow:none;\n  transition:box-shadow .3s ease\n}\n.plyr audio,.plyr video{\n  border-radius:inherit;\n  height:auto;\n  vertical-align:middle;\n  width:100%\n}\n.plyr button{\n  font:inherit;\n  line-height:inherit;\n  width:auto\n}\n.plyr:focus{\n  outline:0\n}\n.plyr--full-ui{\n  box-sizing:border-box\n}\n.plyr--full-ui *,.plyr--full-ui ::after,.plyr--full-ui ::before{\n  box-sizing:inherit\n}\n.plyr--full-ui a,.plyr--full-ui button,.plyr--full-ui input,.plyr--full-ui label{\n  touch-action:manipulation\n}\n.plyr__badge{\n  background:#4f5b5f;\n  border-radius:2px;\n  color:#fff;\n  font-size:9px;\n  line-height:1;\n  padding:3px 4px\n}\n.plyr--full-ui ::-webkit-media-text-track-container{\n  display:none\n}\n.plyr__captions{\n  animation:plyr-fade-in .3s ease;\n  bottom:0;\n  color:#fff;\n  display:none;\n  font-size:14px;\n  left:0;\n  padding:10px;\n  position:absolute;\n  text-align:center;\n  transition:transform .4s ease-in-out;\n  width:100%\n}\n.plyr__captions .plyr__caption{\n  background:rgba(0,0,0,.8);\n  border-radius:2px;\n  -webkit-box-decoration-break:clone;\n  box-decoration-break:clone;\n  line-height:185%;\n  padding:.2em .5em;\n  white-space:pre-wrap\n}\n.plyr__captions .plyr__caption div{\n  display:inline\n}\n.plyr__captions span:empty{\n  display:none\n}\n@media (min-width:480px){\n.plyr__captions{\n    font-size:16px;\n    padding:20px\n}\n}\n@media (min-width:768px){\n.plyr__captions{\n    font-size:18px\n}\n}\n.plyr--captions-active .plyr__captions{\n  display:block\n}\n.plyr:not(.plyr--hide-controls) .plyr__controls:not(:empty)~.plyr__captions{\n  transform:translateY(-40px)\n}\n.plyr__control{\n  background:0 0;\n  border:0;\n  border-radius:3px;\n  color:inherit;\n  cursor:pointer;\n  flex-shrink:0;\n  overflow:visible;\n  padding:7px;\n  position:relative;\n  transition:all .3s ease\n}\n.plyr__control svg{\n  display:block;\n  fill:currentColor;\n  height:18px;\n  pointer-events:none;\n  width:18px\n}\n.plyr__control:focus{\n  outline:0\n}\n.plyr__control.plyr__tab-focus{\n  box-shadow:0 0 0 5px rgba(26,175,255,.5);\n  outline:0\n}\na.plyr__control{\n  text-decoration:none\n}\na.plyr__control::after,a.plyr__control::before{\n  display:none\n}\n.plyr__control.plyr__control--pressed .icon--not-pressed,.plyr__control.plyr__control--pressed .label--not-pressed,.plyr__control:not(.plyr__control--pressed) .icon--pressed,.plyr__control:not(.plyr__control--pressed) .label--pressed{\n  display:none\n}\n.plyr--audio .plyr__control.plyr__tab-focus,.plyr--audio .plyr__control:hover,.plyr--audio .plyr__control[aria-expanded=true]{\n  background:#1aafff;\n  color:#fff\n}\n.plyr--video .plyr__control svg{\n  filter:drop-shadow(0 1px 1px rgba(0, 0, 0, .15))\n}\n.plyr--video .plyr__control.plyr__tab-focus,.plyr--video .plyr__control:hover,.plyr--video .plyr__control[aria-expanded=true]{\n  background:#1aafff;\n  color:#fff\n}\n.plyr__control--overlaid{\n  background:rgba(26,175,255,.8);\n  border:0;\n  border-radius:100%;\n  box-shadow:0 1px 1px rgba(0,0,0,.15);\n  color:#fff;\n  display:none;\n  left:50%;\n  padding:15px;\n  position:absolute;\n  top:50%;\n  transform:translate(-50%,-50%);\n  z-index:2\n}\n.plyr__control--overlaid svg{\n  left:2px;\n  position:relative\n}\n.plyr__control--overlaid:focus,.plyr__control--overlaid:hover{\n  background:#1aafff\n}\n.plyr--playing .plyr__control--overlaid{\n  opacity:0;\n  visibility:hidden\n}\n.plyr--full-ui.plyr--video .plyr__control--overlaid{\n  display:block\n}\n.plyr--full-ui ::-webkit-media-controls{\n  display:none\n}\n.plyr__controls{\n  align-items:center;\n  display:flex;\n  justify-content:flex-end;\n  text-align:center\n}\n.plyr__controls .plyr__progress__container{\n  flex:1\n}\n.plyr__controls .plyr__controls__item{\n  margin-left:2.5px\n}\n.plyr__controls .plyr__controls__item:first-child{\n  margin-left:0;\n  margin-right:auto\n}\n.plyr__controls .plyr__controls__item.plyr__progress__container{\n  padding-left:2.5px\n}\n.plyr__controls .plyr__controls__item.plyr__time{\n  padding:0 5px\n}\n.plyr__controls .plyr__controls__item.plyr__progress__container:first-child,.plyr__controls .plyr__controls__item.plyr__time+.plyr__time,.plyr__controls .plyr__controls__item.plyr__time:first-child{\n  padding-left:0\n}\n.plyr__controls .plyr__controls__item.plyr__volume{\n  padding-right:5px\n}\n.plyr__controls .plyr__controls__item.plyr__volume:first-child{\n  padding-right:0\n}\n.plyr__controls:empty{\n  display:none\n}\n.plyr--audio .plyr__controls{\n  background:#fff;\n  border-radius:inherit;\n  color:#4f5b5f;\n  padding:10px\n}\n.plyr--video .plyr__controls{\n  background:linear-gradient(rgba(0,0,0,0),rgba(0,0,0,.7));\n  border-bottom-left-radius:inherit;\n  border-bottom-right-radius:inherit;\n  bottom:0;\n  color:#fff;\n  left:0;\n  padding:20px 5px 5px;\n  position:absolute;\n  right:0;\n  transition:opacity .4s ease-in-out,transform .4s ease-in-out;\n  z-index:3\n}\n@media (min-width:480px){\n.plyr--video .plyr__controls{\n    padding:35px 10px 10px\n}\n}\n.plyr--video.plyr--hide-controls .plyr__controls{\n  opacity:0;\n  pointer-events:none;\n  transform:translateY(100%)\n}\n.plyr [data-plyr=airplay],.plyr [data-plyr=captions],.plyr [data-plyr=fullscreen],.plyr [data-plyr=pip]{\n  display:none\n}\n.plyr--airplay-supported [data-plyr=airplay],.plyr--captions-enabled [data-plyr=captions],.plyr--fullscreen-enabled [data-plyr=fullscreen],.plyr--pip-supported [data-plyr=pip]{\n  display:inline-block\n}\n.plyr__menu{\n  display:flex;\n  position:relative\n}\n.plyr__menu .plyr__control svg{\n  transition:transform .3s ease\n}\n.plyr__menu .plyr__control[aria-expanded=true] svg{\n  transform:rotate(90deg)\n}\n.plyr__menu .plyr__control[aria-expanded=true] .plyr__tooltip{\n  display:none\n}\n.plyr__menu__container{\n  animation:plyr-popup .2s ease;\n  background:rgba(255,255,255,.9);\n  border-radius:4px;\n  bottom:100%;\n  box-shadow:0 1px 2px rgba(0,0,0,.15);\n  color:#4f5b5f;\n  font-size:16px;\n  margin-bottom:10px;\n  position:absolute;\n  right:-3px;\n  text-align:left;\n  white-space:nowrap;\n  z-index:3\n}\n.plyr__menu__container>div{\n  overflow:hidden;\n  transition:height .35s cubic-bezier(.4,0,.2,1),width .35s cubic-bezier(.4,0,.2,1)\n}\n.plyr__menu__container::after{\n  border:4px solid transparent;\n  border-top-color:rgba(255,255,255,.9);\n  content:'';\n  height:0;\n  position:absolute;\n  right:15px;\n  top:100%;\n  width:0\n}\n.plyr__menu__container [role=menu]{\n  padding:7px\n}\n.plyr__menu__container [role=menuitem],.plyr__menu__container [role=menuitemradio]{\n  margin-top:2px\n}\n.plyr__menu__container [role=menuitem]:first-child,.plyr__menu__container [role=menuitemradio]:first-child{\n  margin-top:0\n}\n.plyr__menu__container .plyr__control{\n  align-items:center;\n  color:#4f5b5f;\n  display:flex;\n  font-size:14px;\n  padding:4px 11px;\n  -webkit-user-select:none;\n  -moz-user-select:none;\n  -ms-user-select:none;\n  user-select:none;\n  width:100%\n}\n.plyr__menu__container .plyr__control>span{\n  align-items:inherit;\n  display:flex;\n  width:100%\n}\n.plyr__menu__container .plyr__control::after{\n  border:4px solid transparent;\n  content:'';\n  position:absolute;\n  top:50%;\n  transform:translateY(-50%)\n}\n.plyr__menu__container .plyr__control--forward{\n  padding-right:28px\n}\n.plyr__menu__container .plyr__control--forward::after{\n  border-left-color:rgba(79,91,95,.8);\n  right:5px\n}\n.plyr__menu__container .plyr__control--forward.plyr__tab-focus::after,.plyr__menu__container .plyr__control--forward:hover::after{\n  border-left-color:currentColor\n}\n.plyr__menu__container .plyr__control--back{\n  font-weight:500;\n  margin:7px;\n  margin-bottom:3px;\n  padding-left:28px;\n  position:relative;\n  width:calc(100% - 14px)\n}\n.plyr__menu__container .plyr__control--back::after{\n  border-right-color:rgba(79,91,95,.8);\n  left:7px\n}\n.plyr__menu__container .plyr__control--back::before{\n  background:#b7c5cd;\n  box-shadow:0 1px 0 #fff;\n  content:'';\n  height:1px;\n  left:0;\n  margin-top:4px;\n  overflow:hidden;\n  position:absolute;\n  right:0;\n  top:100%\n}\n.plyr__menu__container .plyr__control--back.plyr__tab-focus::after,.plyr__menu__container .plyr__control--back:hover::after{\n  border-right-color:currentColor\n}\n.plyr__menu__container .plyr__control[role=menuitemradio]{\n  padding-left:7px\n}\n.plyr__menu__container .plyr__control[role=menuitemradio]::after,.plyr__menu__container .plyr__control[role=menuitemradio]::before{\n  border-radius:100%\n}\n.plyr__menu__container .plyr__control[role=menuitemradio]::before{\n  background:rgba(0,0,0,.1);\n  content:'';\n  display:block;\n  flex-shrink:0;\n  height:16px;\n  margin-right:10px;\n  transition:all .3s ease;\n  width:16px\n}\n.plyr__menu__container .plyr__control[role=menuitemradio]::after{\n  background:#fff;\n  border:0;\n  height:6px;\n  left:12px;\n  opacity:0;\n  top:50%;\n  transform:translateY(-50%) scale(0);\n  transition:transform .3s ease,opacity .3s ease;\n  width:6px\n}\n.plyr__menu__container .plyr__control[role=menuitemradio][aria-checked=true]::before{\n  background:#1aafff\n}\n.plyr__menu__container .plyr__control[role=menuitemradio][aria-checked=true]::after{\n  opacity:1;\n  transform:translateY(-50%) scale(1)\n}\n.plyr__menu__container .plyr__control[role=menuitemradio].plyr__tab-focus::before,.plyr__menu__container .plyr__control[role=menuitemradio]:hover::before{\n  background:rgba(0,0,0,.1)\n}\n.plyr__menu__container .plyr__menu__value{\n  align-items:center;\n  display:flex;\n  margin-left:auto;\n  margin-right:-5px;\n  overflow:hidden;\n  padding-left:25px;\n  pointer-events:none\n}\n.plyr--full-ui input[type=range]{\n  -webkit-appearance:none;\n  background:0 0;\n  border:0;\n  border-radius:26px;\n  color:#1aafff;\n  display:block;\n  height:19px;\n  margin:0;\n  padding:0;\n  transition:box-shadow .3s ease;\n  width:100%\n}\n.plyr--full-ui input[type=range]::-webkit-slider-runnable-track{\n  background:0 0;\n  border:0;\n  border-radius:2.5px;\n  height:5px;\n  transition:box-shadow .3s ease;\n  -webkit-user-select:none;\n  user-select:none;\n  background-image:linear-gradient(to right,currentColor var(--value,0),transparent var(--value,0))\n}\n.plyr--full-ui input[type=range]::-webkit-slider-thumb{\n  background:#fff;\n  border:0;\n  border-radius:100%;\n  box-shadow:0 1px 1px rgba(0,0,0,.15),0 0 0 1px rgba(47,52,61,.2);\n  height:13px;\n  position:relative;\n  transition:all .2s ease;\n  width:13px;\n  -webkit-appearance:none;\n  margin-top:-4px\n}\n.plyr--full-ui input[type=range]::-moz-range-track{\n  background:0 0;\n  border:0;\n  border-radius:2.5px;\n  height:5px;\n  transition:box-shadow .3s ease;\n  -moz-user-select:none;\n  user-select:none\n}\n.plyr--full-ui input[type=range]::-moz-range-thumb{\n  background:#fff;\n  border:0;\n  border-radius:100%;\n  box-shadow:0 1px 1px rgba(0,0,0,.15),0 0 0 1px rgba(47,52,61,.2);\n  height:13px;\n  position:relative;\n  transition:all .2s ease;\n  width:13px\n}\n.plyr--full-ui input[type=range]::-moz-range-progress{\n  background:currentColor;\n  border-radius:2.5px;\n  height:5px\n}\n.plyr--full-ui input[type=range]::-ms-track{\n  background:0 0;\n  border:0;\n  border-radius:2.5px;\n  height:5px;\n  transition:box-shadow .3s ease;\n  -ms-user-select:none;\n  user-select:none;\n  color:transparent\n}\n.plyr--full-ui input[type=range]::-ms-fill-upper{\n  background:0 0;\n  border:0;\n  border-radius:2.5px;\n  height:5px;\n  transition:box-shadow .3s ease;\n  -ms-user-select:none;\n  user-select:none\n}\n.plyr--full-ui input[type=range]::-ms-fill-lower{\n  background:0 0;\n  border:0;\n  border-radius:2.5px;\n  height:5px;\n  transition:box-shadow .3s ease;\n  -ms-user-select:none;\n  user-select:none;\n  background:currentColor\n}\n.plyr--full-ui input[type=range]::-ms-thumb{\n  background:#fff;\n  border:0;\n  border-radius:100%;\n  box-shadow:0 1px 1px rgba(0,0,0,.15),0 0 0 1px rgba(47,52,61,.2);\n  height:13px;\n  position:relative;\n  transition:all .2s ease;\n  width:13px;\n  margin-top:0\n}\n.plyr--full-ui input[type=range]::-ms-tooltip{\n  display:none\n}\n.plyr--full-ui input[type=range]:focus{\n  outline:0\n}\n.plyr--full-ui input[type=range]::-moz-focus-outer{\n  border:0\n}\n.plyr--full-ui input[type=range].plyr__tab-focus::-webkit-slider-runnable-track{\n  box-shadow:0 0 0 5px rgba(26,175,255,.5);\n  outline:0\n}\n.plyr--full-ui input[type=range].plyr__tab-focus::-moz-range-track{\n  box-shadow:0 0 0 5px rgba(26,175,255,.5);\n  outline:0\n}\n.plyr--full-ui input[type=range].plyr__tab-focus::-ms-track{\n  box-shadow:0 0 0 5px rgba(26,175,255,.5);\n  outline:0\n}\n.plyr--full-ui.plyr--video input[type=range]::-webkit-slider-runnable-track{\n  background-color:rgba(255,255,255,.25)\n}\n.plyr--full-ui.plyr--video input[type=range]::-moz-range-track{\n  background-color:rgba(255,255,255,.25)\n}\n.plyr--full-ui.plyr--video input[type=range]::-ms-track{\n  background-color:rgba(255,255,255,.25)\n}\n.plyr--full-ui.plyr--video input[type=range]:active::-webkit-slider-thumb{\n  box-shadow:0 1px 1px rgba(0,0,0,.15),0 0 0 1px rgba(47,52,61,.2),0 0 0 3px rgba(255,255,255,.5)\n}\n.plyr--full-ui.plyr--video input[type=range]:active::-moz-range-thumb{\n  box-shadow:0 1px 1px rgba(0,0,0,.15),0 0 0 1px rgba(47,52,61,.2),0 0 0 3px rgba(255,255,255,.5)\n}\n.plyr--full-ui.plyr--video input[type=range]:active::-ms-thumb{\n  box-shadow:0 1px 1px rgba(0,0,0,.15),0 0 0 1px rgba(47,52,61,.2),0 0 0 3px rgba(255,255,255,.5)\n}\n.plyr--full-ui.plyr--audio input[type=range]::-webkit-slider-runnable-track{\n  background-color:rgba(183,197,205,.66)\n}\n.plyr--full-ui.plyr--audio input[type=range]::-moz-range-track{\n  background-color:rgba(183,197,205,.66)\n}\n.plyr--full-ui.plyr--audio input[type=range]::-ms-track{\n  background-color:rgba(183,197,205,.66)\n}\n.plyr--full-ui.plyr--audio input[type=range]:active::-webkit-slider-thumb{\n  box-shadow:0 1px 1px rgba(0,0,0,.15),0 0 0 1px rgba(47,52,61,.2),0 0 0 3px rgba(0,0,0,.1)\n}\n.plyr--full-ui.plyr--audio input[type=range]:active::-moz-range-thumb{\n  box-shadow:0 1px 1px rgba(0,0,0,.15),0 0 0 1px rgba(47,52,61,.2),0 0 0 3px rgba(0,0,0,.1)\n}\n.plyr--full-ui.plyr--audio input[type=range]:active::-ms-thumb{\n  box-shadow:0 1px 1px rgba(0,0,0,.15),0 0 0 1px rgba(47,52,61,.2),0 0 0 3px rgba(0,0,0,.1)\n}\n.plyr__poster{\n  background-color:#000;\n  background-position:50% 50%;\n  background-repeat:no-repeat;\n  background-size:contain;\n  height:100%;\n  left:0;\n  opacity:0;\n  position:absolute;\n  top:0;\n  transition:opacity .2s ease;\n  width:100%;\n  z-index:1\n}\n.plyr--stopped.plyr__poster-enabled .plyr__poster{\n  opacity:1\n}\n.plyr__time{\n  font-size:14px\n}\n.plyr__time+.plyr__time::before{\n  content:'\\2044';\n  margin-right:10px\n}\n@media (max-width:767px){\n.plyr__time+.plyr__time{\n    display:none\n}\n}\n.plyr--video .plyr__time{\n  text-shadow:0 1px 1px rgba(0,0,0,.15)\n}\n.plyr__tooltip{\n  background:rgba(255,255,255,.9);\n  border-radius:3px;\n  bottom:100%;\n  box-shadow:0 1px 2px rgba(0,0,0,.15);\n  color:#4f5b5f;\n  font-size:14px;\n  font-weight:500;\n  left:50%;\n  line-height:1.3;\n  margin-bottom:10px;\n  opacity:0;\n  padding:5px 7.5px;\n  pointer-events:none;\n  position:absolute;\n  transform:translate(-50%,10px) scale(.8);\n  transform-origin:50% 100%;\n  transition:transform .2s .1s ease,opacity .2s .1s ease;\n  white-space:nowrap;\n  z-index:2\n}\n.plyr__tooltip::before{\n  border-left:4px solid transparent;\n  border-right:4px solid transparent;\n  border-top:4px solid rgba(255,255,255,.9);\n  bottom:-4px;\n  content:'';\n  height:0;\n  left:50%;\n  position:absolute;\n  transform:translateX(-50%);\n  width:0;\n  z-index:2\n}\n.plyr .plyr__control.plyr__tab-focus .plyr__tooltip,.plyr .plyr__control:hover .plyr__tooltip,.plyr__tooltip--visible{\n  opacity:1;\n  transform:translate(-50%,0) scale(1)\n}\n.plyr .plyr__control:hover .plyr__tooltip{\n  z-index:3\n}\n.plyr__controls>.plyr__control:first-child .plyr__tooltip,.plyr__controls>.plyr__control:first-child+.plyr__control .plyr__tooltip{\n  left:0;\n  transform:translate(0,10px) scale(.8);\n  transform-origin:0 100%\n}\n.plyr__controls>.plyr__control:first-child .plyr__tooltip::before,.plyr__controls>.plyr__control:first-child+.plyr__control .plyr__tooltip::before{\n  left:16px\n}\n.plyr__controls>.plyr__control:last-child .plyr__tooltip{\n  left:auto;\n  right:0;\n  transform:translate(0,10px) scale(.8);\n  transform-origin:100% 100%\n}\n.plyr__controls>.plyr__control:last-child .plyr__tooltip::before{\n  left:auto;\n  right:16px;\n  transform:translateX(50%)\n}\n.plyr__controls>.plyr__control:first-child .plyr__tooltip--visible,.plyr__controls>.plyr__control:first-child+.plyr__control .plyr__tooltip--visible,.plyr__controls>.plyr__control:first-child+.plyr__control.plyr__tab-focus .plyr__tooltip,.plyr__controls>.plyr__control:first-child+.plyr__control:hover .plyr__tooltip,.plyr__controls>.plyr__control:first-child.plyr__tab-focus .plyr__tooltip,.plyr__controls>.plyr__control:first-child:hover .plyr__tooltip,.plyr__controls>.plyr__control:last-child .plyr__tooltip--visible,.plyr__controls>.plyr__control:last-child.plyr__tab-focus .plyr__tooltip,.plyr__controls>.plyr__control:last-child:hover .plyr__tooltip{\n  transform:translate(0,0) scale(1)\n}\n.plyr--video{\n  background:#000;\n  overflow:hidden\n}\n.plyr--video.plyr--menu-open{\n  overflow:visible\n}\n.plyr__video-wrapper{\n  background:#000;\n  border-radius:inherit;\n  overflow:hidden;\n  position:relative;\n  z-index:0\n}\n.plyr__video-embed,.plyr__video-wrapper--fixed-ratio{\n  height:0;\n  padding-bottom:56.25%\n}\n.plyr__video-embed iframe,.plyr__video-wrapper--fixed-ratio video{\n  border:0;\n  height:100%;\n  left:0;\n  position:absolute;\n  top:0;\n  -webkit-user-select:none;\n  -moz-user-select:none;\n  -ms-user-select:none;\n  user-select:none;\n  width:100%\n}\n.plyr--full-ui .plyr__video-embed>.plyr__video-embed__container{\n  padding-bottom:240%;\n  position:relative;\n  transform:translateY(-38.28125%)\n}\n.plyr__progress{\n  left:6.5px;\n  margin-right:13px;\n  position:relative\n}\n.plyr__progress input[type=range],.plyr__progress__buffer{\n  margin-left:-6.5px;\n  margin-right:-6.5px;\n  width:calc(100% + 13px)\n}\n.plyr__progress input[type=range]{\n  position:relative;\n  z-index:2\n}\n.plyr__progress .plyr__tooltip{\n  font-size:14px;\n  left:0\n}\n.plyr__progress__buffer{\n  -webkit-appearance:none;\n  background:0 0;\n  border:0;\n  border-radius:100px;\n  height:5px;\n  left:0;\n  margin-top:-2.5px;\n  padding:0;\n  position:absolute;\n  top:50%\n}\n.plyr__progress__buffer::-webkit-progress-bar{\n  background:0 0\n}\n.plyr__progress__buffer::-webkit-progress-value{\n  background:currentColor;\n  border-radius:100px;\n  min-width:5px;\n  transition:width .2s ease\n}\n.plyr__progress__buffer::-moz-progress-bar{\n  background:currentColor;\n  border-radius:100px;\n  min-width:5px;\n  transition:width .2s ease\n}\n.plyr__progress__buffer::-ms-fill{\n  border-radius:100px;\n  transition:width .2s ease\n}\n.plyr--video .plyr__progress__buffer{\n  box-shadow:0 1px 1px rgba(0,0,0,.15);\n  color:rgba(255,255,255,.25)\n}\n.plyr--audio .plyr__progress__buffer{\n  color:rgba(183,197,205,.66)\n}\n.plyr--loading .plyr__progress__buffer{\n  animation:plyr-progress 1s linear infinite;\n  background-image:linear-gradient(-45deg,rgba(47,52,61,.6) 25%,transparent 25%,transparent 50%,rgba(47,52,61,.6) 50%,rgba(47,52,61,.6) 75%,transparent 75%,transparent);\n  background-repeat:repeat-x;\n  background-size:25px 25px;\n  color:transparent\n}\n.plyr--video.plyr--loading .plyr__progress__buffer{\n  background-color:rgba(255,255,255,.25)\n}\n.plyr--audio.plyr--loading .plyr__progress__buffer{\n  background-color:rgba(183,197,205,.66)\n}\n.plyr__volume{\n  align-items:center;\n  display:flex;\n  flex:1;\n  position:relative\n}\n.plyr__volume input[type=range]{\n  margin-left:5px;\n  position:relative;\n  z-index:2\n}\n@media (min-width:480px){\n.plyr__volume{\n    max-width:90px\n}\n}\n@media (min-width:768px){\n.plyr__volume{\n    max-width:110px\n}\n}\n.plyr--is-ios .plyr__volume{\n  display:none!important\n}\n.plyr--is-ios.plyr--vimeo [data-plyr=mute]{\n  display:none!important\n}\n.plyr:-webkit-full-screen{\n  background:#000;\n  border-radius:0!important;\n  height:100%;\n  margin:0;\n  width:100%\n}\n.plyr:-ms-fullscreen{\n  background:#000;\n  border-radius:0!important;\n  height:100%;\n  margin:0;\n  width:100%\n}\n.plyr:fullscreen{\n  background:#000;\n  border-radius:0!important;\n  height:100%;\n  margin:0;\n  width:100%\n}\n.plyr:-webkit-full-screen video{\n  height:100%\n}\n.plyr:-ms-fullscreen video{\n  height:100%\n}\n.plyr:fullscreen video{\n  height:100%\n}\n.plyr:-webkit-full-screen .plyr__video-wrapper{\n  height:100%;\n  width:100%\n}\n.plyr:-ms-fullscreen .plyr__video-wrapper{\n  height:100%;\n  width:100%\n}\n.plyr:fullscreen .plyr__video-wrapper{\n  height:100%;\n  width:100%\n}\n.plyr:-webkit-full-screen.plyr--vimeo .plyr__video-wrapper{\n  height:0;\n  top:50%;\n  transform:translateY(-50%)\n}\n.plyr:-ms-fullscreen.plyr--vimeo .plyr__video-wrapper{\n  height:0;\n  top:50%;\n  transform:translateY(-50%)\n}\n.plyr:fullscreen.plyr--vimeo .plyr__video-wrapper{\n  height:0;\n  top:50%;\n  transform:translateY(-50%)\n}\n.plyr:-webkit-full-screen .plyr__control .icon--exit-fullscreen{\n  display:block\n}\n.plyr:-ms-fullscreen .plyr__control .icon--exit-fullscreen{\n  display:block\n}\n.plyr:fullscreen .plyr__control .icon--exit-fullscreen{\n  display:block\n}\n.plyr:-webkit-full-screen .plyr__control .icon--exit-fullscreen+svg{\n  display:none\n}\n.plyr:-ms-fullscreen .plyr__control .icon--exit-fullscreen+svg{\n  display:none\n}\n.plyr:fullscreen .plyr__control .icon--exit-fullscreen+svg{\n  display:none\n}\n.plyr:-webkit-full-screen.plyr--hide-controls{\n  cursor:none\n}\n.plyr:-ms-fullscreen.plyr--hide-controls{\n  cursor:none\n}\n.plyr:fullscreen.plyr--hide-controls{\n  cursor:none\n}\n@media (min-width:1024px){\n.plyr:-webkit-full-screen .plyr__captions{\n    font-size:21px\n}\n.plyr:-ms-fullscreen .plyr__captions{\n    font-size:21px\n}\n.plyr:fullscreen .plyr__captions{\n    font-size:21px\n}\n}\n.plyr:-webkit-full-screen{\n  background:#000;\n  border-radius:0!important;\n  height:100%;\n  margin:0;\n  width:100%\n}\n.plyr:-webkit-full-screen video{\n  height:100%\n}\n.plyr:-webkit-full-screen .plyr__video-wrapper{\n  height:100%;\n  width:100%\n}\n.plyr:-webkit-full-screen.plyr--vimeo .plyr__video-wrapper{\n  height:0;\n  top:50%;\n  transform:translateY(-50%)\n}\n.plyr:-webkit-full-screen .plyr__control .icon--exit-fullscreen{\n  display:block\n}\n.plyr:-webkit-full-screen .plyr__control .icon--exit-fullscreen+svg{\n  display:none\n}\n.plyr:-webkit-full-screen.plyr--hide-controls{\n  cursor:none\n}\n@media (min-width:1024px){\n.plyr:-webkit-full-screen .plyr__captions{\n    font-size:21px\n}\n}\n.plyr:-moz-full-screen{\n  background:#000;\n  border-radius:0!important;\n  height:100%;\n  margin:0;\n  width:100%\n}\n.plyr:-moz-full-screen video{\n  height:100%\n}\n.plyr:-moz-full-screen .plyr__video-wrapper{\n  height:100%;\n  width:100%\n}\n.plyr:-moz-full-screen.plyr--vimeo .plyr__video-wrapper{\n  height:0;\n  top:50%;\n  transform:translateY(-50%)\n}\n.plyr:-moz-full-screen .plyr__control .icon--exit-fullscreen{\n  display:block\n}\n.plyr:-moz-full-screen .plyr__control .icon--exit-fullscreen+svg{\n  display:none\n}\n.plyr:-moz-full-screen.plyr--hide-controls{\n  cursor:none\n}\n@media (min-width:1024px){\n.plyr:-moz-full-screen .plyr__captions{\n    font-size:21px\n}\n}\n.plyr:-ms-fullscreen{\n  background:#000;\n  border-radius:0!important;\n  height:100%;\n  margin:0;\n  width:100%\n}\n.plyr:-ms-fullscreen video{\n  height:100%\n}\n.plyr:-ms-fullscreen .plyr__video-wrapper{\n  height:100%;\n  width:100%\n}\n.plyr:-ms-fullscreen.plyr--vimeo .plyr__video-wrapper{\n  height:0;\n  top:50%;\n  transform:translateY(-50%)\n}\n.plyr:-ms-fullscreen .plyr__control .icon--exit-fullscreen{\n  display:block\n}\n.plyr:-ms-fullscreen .plyr__control .icon--exit-fullscreen+svg{\n  display:none\n}\n.plyr:-ms-fullscreen.plyr--hide-controls{\n  cursor:none\n}\n@media (min-width:1024px){\n.plyr:-ms-fullscreen .plyr__captions{\n    font-size:21px\n}\n}\n.plyr--fullscreen-fallback{\n  background:#000;\n  border-radius:0!important;\n  height:100%;\n  margin:0;\n  width:100%;\n  bottom:0;\n  left:0;\n  position:fixed;\n  right:0;\n  top:0;\n  z-index:10000000\n}\n.plyr--fullscreen-fallback video{\n  height:100%\n}\n.plyr--fullscreen-fallback .plyr__video-wrapper{\n  height:100%;\n  width:100%\n}\n.plyr--fullscreen-fallback.plyr--vimeo .plyr__video-wrapper{\n  height:0;\n  top:50%;\n  transform:translateY(-50%)\n}\n.plyr--fullscreen-fallback .plyr__control .icon--exit-fullscreen{\n  display:block\n}\n.plyr--fullscreen-fallback .plyr__control .icon--exit-fullscreen+svg{\n  display:none\n}\n.plyr--fullscreen-fallback.plyr--hide-controls{\n  cursor:none\n}\n@media (min-width:1024px){\n.plyr--fullscreen-fallback .plyr__captions{\n    font-size:21px\n}\n}\n.plyr__ads{\n  border-radius:inherit;\n  bottom:0;\n  cursor:pointer;\n  left:0;\n  overflow:hidden;\n  position:absolute;\n  right:0;\n  top:0;\n  z-index:-1\n}\n.plyr__ads>div,.plyr__ads>div iframe{\n  height:100%;\n  position:absolute;\n  width:100%\n}\n.plyr__ads::after{\n  background:rgba(47,52,61,.8);\n  border-radius:2px;\n  bottom:10px;\n  color:#fff;\n  content:attr(data-badge-text);\n  font-size:11px;\n  padding:2px 6px;\n  pointer-events:none;\n  position:absolute;\n  right:10px;\n  z-index:3\n}\n.plyr__ads::after:empty{\n  display:none\n}\n.plyr__cues{\n  background:currentColor;\n  display:block;\n  height:5px;\n  left:0;\n  margin:-2.5px 0 0;\n  opacity:.8;\n  position:absolute;\n  top:50%;\n  width:3px;\n  z-index:3\n}\n.plyr__preview-thumb{\n  background-color:rgba(255,255,255,.9);\n  border-radius:3px;\n  bottom:100%;\n  box-shadow:0 1px 2px rgba(0,0,0,.15);\n  margin-bottom:10px;\n  opacity:0;\n  padding:3px;\n  pointer-events:none;\n  position:absolute;\n  transform:translate(0,10px) scale(.8);\n  transform-origin:50% 100%;\n  transition:transform .2s .1s ease,opacity .2s .1s ease;\n  z-index:2\n}\n.plyr__preview-thumb--is-shown{\n  opacity:1;\n  transform:translate(0,0) scale(1)\n}\n.plyr__preview-thumb::before{\n  border-left:4px solid transparent;\n  border-right:4px solid transparent;\n  border-top:4px solid rgba(255,255,255,.9);\n  bottom:-4px;\n  content:'';\n  height:0;\n  left:50%;\n  position:absolute;\n  transform:translateX(-50%);\n  width:0;\n  z-index:2\n}\n.plyr__preview-thumb__image-container{\n  background:#b7c5cd;\n  border-radius:2px;\n  overflow:hidden;\n  position:relative;\n  z-index:0\n}\n.plyr__preview-thumb__image-container img{\n  height:100%;\n  left:0;\n  max-height:none;\n  max-width:none;\n  position:absolute;\n  top:0;\n  width:100%\n}\n.plyr__preview-thumb__time-container{\n  bottom:6px;\n  left:0;\n  position:absolute;\n  right:0;\n  white-space:nowrap;\n  z-index:3\n}\n.plyr__preview-thumb__time-container span{\n  background-color:rgba(0,0,0,.55);\n  border-radius:2px;\n  color:#fff;\n  font-size:14px;\n  padding:3px 6px\n}\n.plyr__preview-scrubbing{\n  bottom:0;\n  filter:blur(1px);\n  height:100%;\n  left:0;\n  margin:auto;\n  opacity:0;\n  overflow:hidden;\n  position:absolute;\n  right:0;\n  top:0;\n  transition:opacity .3s ease;\n  width:100%;\n  z-index:1\n}\n.plyr__preview-scrubbing--is-shown{\n  opacity:1\n}\n.plyr__preview-scrubbing img{\n  height:100%;\n  left:0;\n  max-height:none;\n  max-width:none;\n  -o-object-fit:contain;\n  object-fit:contain;\n  position:absolute;\n  top:0;\n  width:100%\n}\n.plyr--no-transition{\n  transition:none!important\n}\n.plyr__sr-only{\n  clip:rect(1px,1px,1px,1px);\n  overflow:hidden;\n  border:0!important;\n  height:1px!important;\n  padding:0!important;\n  position:absolute!important;\n  width:1px!important\n}\n.plyr [hidden]{\n  display:none!important\n}", ""]);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
-// exports
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: 'app-track',
+  props: {
+    song: {
+      required: true
+    },
+    displayArtist: {
+      type: Boolean,
+      required: false,
+      "default": false
+    },
+    displayAlbum: {
+      type: Boolean,
+      required: false,
+      "default": false
+    }
+  },
+  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])('player', {
+    currentSong: 'song'
+  })),
+  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])('player', ['setSong', 'play']), {
+    playtime: function playtime(length) {
+      var seconds = Math.floor(length);
+      var minutes = Math.floor(seconds / 60);
+      seconds = seconds - minutes * 60;
+      return minutes + ':' + seconds.toString().padStart(2, 0);
+    },
+    isCurrentlyPlaying: function isCurrentlyPlaying() {
+      if (!this.currentSong) {
+        return false;
+      }
 
-
-/***/ }),
-
-/***/ "./node_modules/css-loader/lib/css-base.js":
-/*!*************************************************!*\
-  !*** ./node_modules/css-loader/lib/css-base.js ***!
-  \*************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-/*
-	MIT License http://www.opensource.org/licenses/mit-license.php
-	Author Tobias Koppers @sokra
-*/
-// css base code, injected by the css-loader
-module.exports = function(useSourceMap) {
-	var list = [];
-
-	// return the list of modules as css string
-	list.toString = function toString() {
-		return this.map(function (item) {
-			var content = cssWithMappingToString(item, useSourceMap);
-			if(item[2]) {
-				return "@media " + item[2] + "{" + content + "}";
-			} else {
-				return content;
-			}
-		}).join("");
-	};
-
-	// import a list of modules into the list
-	list.i = function(modules, mediaQuery) {
-		if(typeof modules === "string")
-			modules = [[null, modules, ""]];
-		var alreadyImportedModules = {};
-		for(var i = 0; i < this.length; i++) {
-			var id = this[i][0];
-			if(typeof id === "number")
-				alreadyImportedModules[id] = true;
-		}
-		for(i = 0; i < modules.length; i++) {
-			var item = modules[i];
-			// skip already imported module
-			// this implementation is not 100% perfect for weird media query combinations
-			//  when a module is imported multiple times with different media queries.
-			//  I hope this will never occur (Hey this way we have smaller bundles)
-			if(typeof item[0] !== "number" || !alreadyImportedModules[item[0]]) {
-				if(mediaQuery && !item[2]) {
-					item[2] = mediaQuery;
-				} else if(mediaQuery) {
-					item[2] = "(" + item[2] + ") and (" + mediaQuery + ")";
-				}
-				list.push(item);
-			}
-		}
-	};
-	return list;
-};
-
-function cssWithMappingToString(item, useSourceMap) {
-	var content = item[1] || '';
-	var cssMapping = item[3];
-	if (!cssMapping) {
-		return content;
-	}
-
-	if (useSourceMap && typeof btoa === 'function') {
-		var sourceMapping = toComment(cssMapping);
-		var sourceURLs = cssMapping.sources.map(function (source) {
-			return '/*# sourceURL=' + cssMapping.sourceRoot + source + ' */'
-		});
-
-		return [content].concat(sourceURLs).concat([sourceMapping]).join('\n');
-	}
-
-	return [content].join('\n');
-}
-
-// Adapted from convert-source-map (MIT)
-function toComment(sourceMap) {
-	// eslint-disable-next-line no-undef
-	var base64 = btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap))));
-	var data = 'sourceMappingURL=data:application/json;charset=utf-8;base64,' + base64;
-
-	return '/*# ' + data + ' */';
-}
-
+      return this.currentSong.id === this.song.id;
+    }
+  })
+});
 
 /***/ }),
 
@@ -2313,22 +2233,6 @@ function isSlowBuffer (obj) {
   return typeof obj.readFloatLE === 'function' && typeof obj.slice === 'function' && isBuffer(obj.slice(0, 0))
 }
 
-
-/***/ }),
-
-/***/ "./node_modules/plyr/dist/plyr.css?vue&type=style&index=0&lang=css&":
-/*!**************************************************************************!*\
-  !*** ./node_modules/plyr/dist/plyr.css?vue&type=style&index=0&lang=css& ***!
-  \**************************************************************************/
-/*! no static exports found */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _style_loader_index_js_css_loader_index_js_ref_6_1_vue_loader_lib_loaders_stylePostLoader_js_postcss_loader_src_index_js_ref_6_2_plyr_css_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../style-loader!../../css-loader??ref--6-1!../../vue-loader/lib/loaders/stylePostLoader.js!../../postcss-loader/src??ref--6-2!./plyr.css?vue&type=style&index=0&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/plyr/dist/plyr.css?vue&type=style&index=0&lang=css&");
-/* harmony import */ var _style_loader_index_js_css_loader_index_js_ref_6_1_vue_loader_lib_loaders_stylePostLoader_js_postcss_loader_src_index_js_ref_6_2_plyr_css_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_style_loader_index_js_css_loader_index_js_ref_6_1_vue_loader_lib_loaders_stylePostLoader_js_postcss_loader_src_index_js_ref_6_2_plyr_css_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__);
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _style_loader_index_js_css_loader_index_js_ref_6_1_vue_loader_lib_loaders_stylePostLoader_js_postcss_loader_src_index_js_ref_6_2_plyr_css_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _style_loader_index_js_css_loader_index_js_ref_6_1_vue_loader_lib_loaders_stylePostLoader_js_postcss_loader_src_index_js_ref_6_2_plyr_css_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
- /* harmony default export */ __webpack_exports__["default"] = (_style_loader_index_js_css_loader_index_js_ref_6_1_vue_loader_lib_loaders_stylePostLoader_js_postcss_loader_src_index_js_ref_6_2_plyr_css_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
 
 /***/ }),
 
@@ -2739,545 +2643,6 @@ process.umask = function() { return 0; };
 
 /***/ }),
 
-/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/plyr/dist/plyr.css?vue&type=style&index=0&lang=css&":
-/*!***********************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/plyr/dist/plyr.css?vue&type=style&index=0&lang=css& ***!
-  \***********************************************************************************************************************************************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-
-var content = __webpack_require__(/*! !../../css-loader??ref--6-1!../../vue-loader/lib/loaders/stylePostLoader.js!../../postcss-loader/src??ref--6-2!./plyr.css?vue&type=style&index=0&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/plyr/dist/plyr.css?vue&type=style&index=0&lang=css&");
-
-if(typeof content === 'string') content = [[module.i, content, '']];
-
-var transform;
-var insertInto;
-
-
-
-var options = {"hmr":true}
-
-options.transform = transform
-options.insertInto = undefined;
-
-var update = __webpack_require__(/*! ../../style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
-
-if(content.locals) module.exports = content.locals;
-
-if(false) {}
-
-/***/ }),
-
-/***/ "./node_modules/style-loader/lib/addStyles.js":
-/*!****************************************************!*\
-  !*** ./node_modules/style-loader/lib/addStyles.js ***!
-  \****************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-/*
-	MIT License http://www.opensource.org/licenses/mit-license.php
-	Author Tobias Koppers @sokra
-*/
-
-var stylesInDom = {};
-
-var	memoize = function (fn) {
-	var memo;
-
-	return function () {
-		if (typeof memo === "undefined") memo = fn.apply(this, arguments);
-		return memo;
-	};
-};
-
-var isOldIE = memoize(function () {
-	// Test for IE <= 9 as proposed by Browserhacks
-	// @see http://browserhacks.com/#hack-e71d8692f65334173fee715c222cb805
-	// Tests for existence of standard globals is to allow style-loader
-	// to operate correctly into non-standard environments
-	// @see https://github.com/webpack-contrib/style-loader/issues/177
-	return window && document && document.all && !window.atob;
-});
-
-var getTarget = function (target, parent) {
-  if (parent){
-    return parent.querySelector(target);
-  }
-  return document.querySelector(target);
-};
-
-var getElement = (function (fn) {
-	var memo = {};
-
-	return function(target, parent) {
-                // If passing function in options, then use it for resolve "head" element.
-                // Useful for Shadow Root style i.e
-                // {
-                //   insertInto: function () { return document.querySelector("#foo").shadowRoot }
-                // }
-                if (typeof target === 'function') {
-                        return target();
-                }
-                if (typeof memo[target] === "undefined") {
-			var styleTarget = getTarget.call(this, target, parent);
-			// Special case to return head of iframe instead of iframe itself
-			if (window.HTMLIFrameElement && styleTarget instanceof window.HTMLIFrameElement) {
-				try {
-					// This will throw an exception if access to iframe is blocked
-					// due to cross-origin restrictions
-					styleTarget = styleTarget.contentDocument.head;
-				} catch(e) {
-					styleTarget = null;
-				}
-			}
-			memo[target] = styleTarget;
-		}
-		return memo[target]
-	};
-})();
-
-var singleton = null;
-var	singletonCounter = 0;
-var	stylesInsertedAtTop = [];
-
-var	fixUrls = __webpack_require__(/*! ./urls */ "./node_modules/style-loader/lib/urls.js");
-
-module.exports = function(list, options) {
-	if (typeof DEBUG !== "undefined" && DEBUG) {
-		if (typeof document !== "object") throw new Error("The style-loader cannot be used in a non-browser environment");
-	}
-
-	options = options || {};
-
-	options.attrs = typeof options.attrs === "object" ? options.attrs : {};
-
-	// Force single-tag solution on IE6-9, which has a hard limit on the # of <style>
-	// tags it will allow on a page
-	if (!options.singleton && typeof options.singleton !== "boolean") options.singleton = isOldIE();
-
-	// By default, add <style> tags to the <head> element
-        if (!options.insertInto) options.insertInto = "head";
-
-	// By default, add <style> tags to the bottom of the target
-	if (!options.insertAt) options.insertAt = "bottom";
-
-	var styles = listToStyles(list, options);
-
-	addStylesToDom(styles, options);
-
-	return function update (newList) {
-		var mayRemove = [];
-
-		for (var i = 0; i < styles.length; i++) {
-			var item = styles[i];
-			var domStyle = stylesInDom[item.id];
-
-			domStyle.refs--;
-			mayRemove.push(domStyle);
-		}
-
-		if(newList) {
-			var newStyles = listToStyles(newList, options);
-			addStylesToDom(newStyles, options);
-		}
-
-		for (var i = 0; i < mayRemove.length; i++) {
-			var domStyle = mayRemove[i];
-
-			if(domStyle.refs === 0) {
-				for (var j = 0; j < domStyle.parts.length; j++) domStyle.parts[j]();
-
-				delete stylesInDom[domStyle.id];
-			}
-		}
-	};
-};
-
-function addStylesToDom (styles, options) {
-	for (var i = 0; i < styles.length; i++) {
-		var item = styles[i];
-		var domStyle = stylesInDom[item.id];
-
-		if(domStyle) {
-			domStyle.refs++;
-
-			for(var j = 0; j < domStyle.parts.length; j++) {
-				domStyle.parts[j](item.parts[j]);
-			}
-
-			for(; j < item.parts.length; j++) {
-				domStyle.parts.push(addStyle(item.parts[j], options));
-			}
-		} else {
-			var parts = [];
-
-			for(var j = 0; j < item.parts.length; j++) {
-				parts.push(addStyle(item.parts[j], options));
-			}
-
-			stylesInDom[item.id] = {id: item.id, refs: 1, parts: parts};
-		}
-	}
-}
-
-function listToStyles (list, options) {
-	var styles = [];
-	var newStyles = {};
-
-	for (var i = 0; i < list.length; i++) {
-		var item = list[i];
-		var id = options.base ? item[0] + options.base : item[0];
-		var css = item[1];
-		var media = item[2];
-		var sourceMap = item[3];
-		var part = {css: css, media: media, sourceMap: sourceMap};
-
-		if(!newStyles[id]) styles.push(newStyles[id] = {id: id, parts: [part]});
-		else newStyles[id].parts.push(part);
-	}
-
-	return styles;
-}
-
-function insertStyleElement (options, style) {
-	var target = getElement(options.insertInto)
-
-	if (!target) {
-		throw new Error("Couldn't find a style target. This probably means that the value for the 'insertInto' parameter is invalid.");
-	}
-
-	var lastStyleElementInsertedAtTop = stylesInsertedAtTop[stylesInsertedAtTop.length - 1];
-
-	if (options.insertAt === "top") {
-		if (!lastStyleElementInsertedAtTop) {
-			target.insertBefore(style, target.firstChild);
-		} else if (lastStyleElementInsertedAtTop.nextSibling) {
-			target.insertBefore(style, lastStyleElementInsertedAtTop.nextSibling);
-		} else {
-			target.appendChild(style);
-		}
-		stylesInsertedAtTop.push(style);
-	} else if (options.insertAt === "bottom") {
-		target.appendChild(style);
-	} else if (typeof options.insertAt === "object" && options.insertAt.before) {
-		var nextSibling = getElement(options.insertAt.before, target);
-		target.insertBefore(style, nextSibling);
-	} else {
-		throw new Error("[Style Loader]\n\n Invalid value for parameter 'insertAt' ('options.insertAt') found.\n Must be 'top', 'bottom', or Object.\n (https://github.com/webpack-contrib/style-loader#insertat)\n");
-	}
-}
-
-function removeStyleElement (style) {
-	if (style.parentNode === null) return false;
-	style.parentNode.removeChild(style);
-
-	var idx = stylesInsertedAtTop.indexOf(style);
-	if(idx >= 0) {
-		stylesInsertedAtTop.splice(idx, 1);
-	}
-}
-
-function createStyleElement (options) {
-	var style = document.createElement("style");
-
-	if(options.attrs.type === undefined) {
-		options.attrs.type = "text/css";
-	}
-
-	if(options.attrs.nonce === undefined) {
-		var nonce = getNonce();
-		if (nonce) {
-			options.attrs.nonce = nonce;
-		}
-	}
-
-	addAttrs(style, options.attrs);
-	insertStyleElement(options, style);
-
-	return style;
-}
-
-function createLinkElement (options) {
-	var link = document.createElement("link");
-
-	if(options.attrs.type === undefined) {
-		options.attrs.type = "text/css";
-	}
-	options.attrs.rel = "stylesheet";
-
-	addAttrs(link, options.attrs);
-	insertStyleElement(options, link);
-
-	return link;
-}
-
-function addAttrs (el, attrs) {
-	Object.keys(attrs).forEach(function (key) {
-		el.setAttribute(key, attrs[key]);
-	});
-}
-
-function getNonce() {
-	if (false) {}
-
-	return __webpack_require__.nc;
-}
-
-function addStyle (obj, options) {
-	var style, update, remove, result;
-
-	// If a transform function was defined, run it on the css
-	if (options.transform && obj.css) {
-	    result = typeof options.transform === 'function'
-		 ? options.transform(obj.css) 
-		 : options.transform.default(obj.css);
-
-	    if (result) {
-	    	// If transform returns a value, use that instead of the original css.
-	    	// This allows running runtime transformations on the css.
-	    	obj.css = result;
-	    } else {
-	    	// If the transform function returns a falsy value, don't add this css.
-	    	// This allows conditional loading of css
-	    	return function() {
-	    		// noop
-	    	};
-	    }
-	}
-
-	if (options.singleton) {
-		var styleIndex = singletonCounter++;
-
-		style = singleton || (singleton = createStyleElement(options));
-
-		update = applyToSingletonTag.bind(null, style, styleIndex, false);
-		remove = applyToSingletonTag.bind(null, style, styleIndex, true);
-
-	} else if (
-		obj.sourceMap &&
-		typeof URL === "function" &&
-		typeof URL.createObjectURL === "function" &&
-		typeof URL.revokeObjectURL === "function" &&
-		typeof Blob === "function" &&
-		typeof btoa === "function"
-	) {
-		style = createLinkElement(options);
-		update = updateLink.bind(null, style, options);
-		remove = function () {
-			removeStyleElement(style);
-
-			if(style.href) URL.revokeObjectURL(style.href);
-		};
-	} else {
-		style = createStyleElement(options);
-		update = applyToTag.bind(null, style);
-		remove = function () {
-			removeStyleElement(style);
-		};
-	}
-
-	update(obj);
-
-	return function updateStyle (newObj) {
-		if (newObj) {
-			if (
-				newObj.css === obj.css &&
-				newObj.media === obj.media &&
-				newObj.sourceMap === obj.sourceMap
-			) {
-				return;
-			}
-
-			update(obj = newObj);
-		} else {
-			remove();
-		}
-	};
-}
-
-var replaceText = (function () {
-	var textStore = [];
-
-	return function (index, replacement) {
-		textStore[index] = replacement;
-
-		return textStore.filter(Boolean).join('\n');
-	};
-})();
-
-function applyToSingletonTag (style, index, remove, obj) {
-	var css = remove ? "" : obj.css;
-
-	if (style.styleSheet) {
-		style.styleSheet.cssText = replaceText(index, css);
-	} else {
-		var cssNode = document.createTextNode(css);
-		var childNodes = style.childNodes;
-
-		if (childNodes[index]) style.removeChild(childNodes[index]);
-
-		if (childNodes.length) {
-			style.insertBefore(cssNode, childNodes[index]);
-		} else {
-			style.appendChild(cssNode);
-		}
-	}
-}
-
-function applyToTag (style, obj) {
-	var css = obj.css;
-	var media = obj.media;
-
-	if(media) {
-		style.setAttribute("media", media)
-	}
-
-	if(style.styleSheet) {
-		style.styleSheet.cssText = css;
-	} else {
-		while(style.firstChild) {
-			style.removeChild(style.firstChild);
-		}
-
-		style.appendChild(document.createTextNode(css));
-	}
-}
-
-function updateLink (link, options, obj) {
-	var css = obj.css;
-	var sourceMap = obj.sourceMap;
-
-	/*
-		If convertToAbsoluteUrls isn't defined, but sourcemaps are enabled
-		and there is no publicPath defined then lets turn convertToAbsoluteUrls
-		on by default.  Otherwise default to the convertToAbsoluteUrls option
-		directly
-	*/
-	var autoFixUrls = options.convertToAbsoluteUrls === undefined && sourceMap;
-
-	if (options.convertToAbsoluteUrls || autoFixUrls) {
-		css = fixUrls(css);
-	}
-
-	if (sourceMap) {
-		// http://stackoverflow.com/a/26603875
-		css += "\n/*# sourceMappingURL=data:application/json;base64," + btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap)))) + " */";
-	}
-
-	var blob = new Blob([css], { type: "text/css" });
-
-	var oldSrc = link.href;
-
-	link.href = URL.createObjectURL(blob);
-
-	if(oldSrc) URL.revokeObjectURL(oldSrc);
-}
-
-
-/***/ }),
-
-/***/ "./node_modules/style-loader/lib/urls.js":
-/*!***********************************************!*\
-  !*** ./node_modules/style-loader/lib/urls.js ***!
-  \***********************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-
-/**
- * When source maps are enabled, `style-loader` uses a link element with a data-uri to
- * embed the css on the page. This breaks all relative urls because now they are relative to a
- * bundle instead of the current page.
- *
- * One solution is to only use full urls, but that may be impossible.
- *
- * Instead, this function "fixes" the relative urls to be absolute according to the current page location.
- *
- * A rudimentary test suite is located at `test/fixUrls.js` and can be run via the `npm test` command.
- *
- */
-
-module.exports = function (css) {
-  // get current location
-  var location = typeof window !== "undefined" && window.location;
-
-  if (!location) {
-    throw new Error("fixUrls requires window.location");
-  }
-
-	// blank or null?
-	if (!css || typeof css !== "string") {
-	  return css;
-  }
-
-  var baseUrl = location.protocol + "//" + location.host;
-  var currentDir = baseUrl + location.pathname.replace(/\/[^\/]*$/, "/");
-
-	// convert each url(...)
-	/*
-	This regular expression is just a way to recursively match brackets within
-	a string.
-
-	 /url\s*\(  = Match on the word "url" with any whitespace after it and then a parens
-	   (  = Start a capturing group
-	     (?:  = Start a non-capturing group
-	         [^)(]  = Match anything that isn't a parentheses
-	         |  = OR
-	         \(  = Match a start parentheses
-	             (?:  = Start another non-capturing groups
-	                 [^)(]+  = Match anything that isn't a parentheses
-	                 |  = OR
-	                 \(  = Match a start parentheses
-	                     [^)(]*  = Match anything that isn't a parentheses
-	                 \)  = Match a end parentheses
-	             )  = End Group
-              *\) = Match anything and then a close parens
-          )  = Close non-capturing group
-          *  = Match anything
-       )  = Close capturing group
-	 \)  = Match a close parens
-
-	 /gi  = Get all matches, not the first.  Be case insensitive.
-	 */
-	var fixedCss = css.replace(/url\s*\(((?:[^)(]|\((?:[^)(]+|\([^)(]*\))*\))*)\)/gi, function(fullMatch, origUrl) {
-		// strip quotes (if they exist)
-		var unquotedOrigUrl = origUrl
-			.trim()
-			.replace(/^"(.*)"$/, function(o, $1){ return $1; })
-			.replace(/^'(.*)'$/, function(o, $1){ return $1; });
-
-		// already a full url? no change
-		if (/^(#|data:|http:\/\/|https:\/\/|file:\/\/\/|\s*$)/i.test(unquotedOrigUrl)) {
-		  return fullMatch;
-		}
-
-		// convert the url to a full url
-		var newUrl;
-
-		if (unquotedOrigUrl.indexOf("//") === 0) {
-		  	//TODO: should we add protocol?
-			newUrl = unquotedOrigUrl;
-		} else if (unquotedOrigUrl.indexOf("/") === 0) {
-			// path should be relative to the base url
-			newUrl = baseUrl + unquotedOrigUrl; // already starts with '/'
-		} else {
-			// path should be relative to current directory
-			newUrl = currentDir + unquotedOrigUrl.replace(/^\.\//, ""); // Strip leading './'
-		}
-
-		// send back the fixed url(...)
-		return "url(" + JSON.stringify(newUrl) + ")";
-	});
-
-	// send back the fixed css
-	return fixedCss;
-};
-
-
-/***/ }),
-
 /***/ "./node_modules/timers-browserify/main.js":
 /*!************************************************!*\
   !*** ./node_modules/timers-browserify/main.js ***!
@@ -3432,8 +2797,8 @@ var render = function() {
           "div",
           {
             staticClass:
-              "w-full block bg-gray-1000 flex items-center justify-center text-5xl",
-            staticStyle: { height: "220px" }
+              "w-full block bg-dark flex items-center justify-center text-5xl",
+            staticStyle: { height: "200px" }
           },
           [
             _c("i", {
@@ -3442,7 +2807,7 @@ var render = function() {
           ]
         )
       : _c("img", {
-          staticClass: "h-full rounded-lg mr-6",
+          staticClass: "h-full mr-6",
           staticStyle: { width: "220px", "max-height": "220px" },
           attrs: { src: "/" + _vm.song.album.cover, alt: _vm.song.album.name }
         })
@@ -3470,16 +2835,54 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { staticClass: "bg-gray-800 w-full flex" }, [
+    _c(
+      "div",
+      {
+        staticClass:
+          "block flex flex-col flex-shrink-0 h-20 justify-center text-xs px-3",
+        staticStyle: { width: "200px" }
+      },
+      [
+        _vm.song
+          ? _c(
+              "div",
+              { staticClass: "truncate" },
+              [
+                _c(
+                  "router-link",
+                  {
+                    staticClass:
+                      "block focus:outline-none hover:underline text-white",
+                    attrs: { tag: "button", to: "/albums/" + _vm.song.album.id }
+                  },
+                  [_vm._v(_vm._s(_vm.song.title))]
+                ),
+                _vm._v(" "),
+                _c(
+                  "router-link",
+                  {
+                    staticClass: "block focus:outline-none hover:underline",
+                    attrs: {
+                      tag: "button",
+                      to: "/artists/" + _vm.song.artist.id
+                    }
+                  },
+                  [_vm._v(_vm._s(_vm.song.artist.name))]
+                )
+              ],
+              1
+            )
+          : _vm._e()
+      ]
+    ),
+    _vm._v(" "),
+    _c("div", { staticClass: "w-full flex items-center" }, [
+      _c("audio", { ref: "player", attrs: { controls: "" } })
+    ])
+  ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", [_c("audio", { attrs: { controls: "" } })])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -3528,63 +2931,16 @@ var render = function() {
       "tbody",
       { staticClass: "text-sm tracking-wide" },
       _vm._l(_vm.songs, function(song) {
-        return _c(
-          "tr",
-          {
-            key: song.id,
-            staticClass: "border-b border-gray-800 hover:bg-gray-700"
-          },
-          [
-            _c("td", { staticClass: "p-2 w-10" }, [_vm._v(_vm._s(song.track))]),
-            _vm._v(" "),
-            _c("td", { staticClass: "p-2 w-10" }, [
-              _vm.isCurrentlyPlaying(song)
-                ? _c("i", {
-                    staticClass: "fas fa-compact-disc fa-spin text-axiom-500"
-                  })
-                : _c(
-                    "a",
-                    {
-                      attrs: { href: "#" },
-                      on: {
-                        click: function($event) {
-                          $event.preventDefault()
-                          return _vm.setSong(song)
-                        }
-                      }
-                    },
-                    [
-                      _c("i", {
-                        staticClass:
-                          "fas fa-play-circle hover:text-axiom-500 text-gray-600"
-                      })
-                    ]
-                  )
-            ]),
-            _vm._v(" "),
-            _c("td", { staticClass: "p-2" }, [_vm._v(_vm._s(song.title))]),
-            _vm._v(" "),
-            _vm.displayArtist
-              ? _c("td", { staticClass: "p-2" }, [
-                  _vm._v(_vm._s(song.artist.name))
-                ])
-              : _vm._e(),
-            _vm._v(" "),
-            _vm.displayAlbum
-              ? _c("td", { staticClass: "p-2" }, [
-                  _vm._v(_vm._s(song.album.name))
-                ])
-              : _vm._e(),
-            _vm._v(" "),
-            _c("td", { staticClass: "p-2 w-16" }, [
-              _vm._v(_vm._s(_vm.playtime(song.length)))
-            ]),
-            _vm._v(" "),
-            _c("td", { staticClass: "p-2 w-16" })
-          ]
-        )
+        return _c("app-track", {
+          key: song.id,
+          attrs: {
+            song: song,
+            displayArtist: _vm.displayArtist,
+            displayAlbum: _vm.displayAlbum
+          }
+        })
       }),
-      0
+      1
     )
   ])
 }
@@ -3659,16 +3015,17 @@ var render = function() {
   return _c(
     "div",
     {
-      staticClass: "flex items-center sticky pin-t py-3 px-6 w-full bg-gray-900"
+      staticClass:
+        "flex items-center sticky pin-t py-3 px-6 w-full bg-gray-900 fixed top-0 shadow-md"
     },
     [
       _c("div", { staticClass: "flex" }, [
         _c("div", { staticClass: "flex items-center mr-6" }, [
           _c(
-            "a",
+            "button",
             {
-              staticClass: "mr-6 text-gray-200 no-underline hover:text-white",
-              attrs: { href: "#" },
+              staticClass:
+                "mr-6 text-gray-200 no-underline hover:text-white focus:outline-none",
               on: {
                 click: function($event) {
                   $event.preventDefault()
@@ -3680,10 +3037,10 @@ var render = function() {
           ),
           _vm._v(" "),
           _c(
-            "a",
+            "button",
             {
-              staticClass: "mr-6 text-gray-200 no-underline hover:text-white",
-              attrs: { href: "#" },
+              staticClass:
+                "mr-6 text-gray-200 no-underline hover:text-white focus:outline-none",
               on: {
                 click: function($event) {
                   $event.preventDefault()
@@ -3757,7 +3114,7 @@ var render = function() {
                 "router-link",
                 {
                   staticClass: "sidebar__link mt-8",
-                  attrs: { exact: "", to: "/" }
+                  attrs: { tag: "button", exact: "", to: "/" }
                 },
                 [_vm._v("\n                    Browse\n                ")]
               )
@@ -3779,7 +3136,7 @@ var render = function() {
                 "router-link",
                 {
                   staticClass: "sidebar__link",
-                  attrs: { to: "/recently-added" }
+                  attrs: { tag: "button", to: "/recently-added" }
                 },
                 [
                   _vm._v(
@@ -3797,7 +3154,10 @@ var render = function() {
             [
               _c(
                 "router-link",
-                { staticClass: "sidebar__link", attrs: { to: "/artists" } },
+                {
+                  staticClass: "sidebar__link",
+                  attrs: { tag: "button", to: "/artists" }
+                },
                 [_vm._v("\n                    Artists\n                ")]
               )
             ],
@@ -3810,17 +3170,18 @@ var render = function() {
             [
               _c(
                 "router-link",
-                { staticClass: "sidebar__link", attrs: { to: "/albums" } },
+                {
+                  staticClass: "sidebar__link",
+                  attrs: { tag: "button", to: "/albums" }
+                },
                 [_vm._v("\n                    Albums\n                ")]
               )
             ],
             1
-          ),
-          _vm._v(" "),
-          _vm._m(0)
+          )
         ]),
         _vm._v(" "),
-        _vm._m(1)
+        _vm._m(0)
       ]),
       _vm._v(" "),
       _c("app-cover")
@@ -3833,16 +3194,6 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("li", { staticClass: "sidebar__item" }, [
-      _c("a", { staticClass: "sidebar__link", attrs: { href: "#" } }, [
-        _vm._v("\n                    Songs\n                ")
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
     return _c("ul", { staticClass: "mt-8" }, [
       _c("li", { staticClass: "sidebar__label" }, [
         _vm._v("\n                Playlists\n            ")
@@ -3850,6 +3201,80 @@ var staticRenderFns = [
     ])
   }
 ]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Track.vue?vue&type=template&id=04526720&":
+/*!********************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Track.vue?vue&type=template&id=04526720& ***!
+  \********************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "tr",
+    { staticClass: "border-b border-gray-800 hover:bg-gray-700" },
+    [
+      _c("td", { staticClass: "p-2 w-10" }, [_vm._v(_vm._s(_vm.song.track))]),
+      _vm._v(" "),
+      _c("td", { staticClass: "p-2 w-10" }, [
+        _vm.isCurrentlyPlaying()
+          ? _c("i", {
+              staticClass: "fas fa-compact-disc fa-spin text-axiom-500"
+            })
+          : _c(
+              "button",
+              {
+                on: {
+                  click: function($event) {
+                    $event.preventDefault()
+                    return _vm.setSong(_vm.song)
+                  }
+                }
+              },
+              [
+                _c("i", {
+                  staticClass:
+                    "fas fa-play-circle hover:text-axiom-500 text-gray-600 focus:outline-none"
+                })
+              ]
+            )
+      ]),
+      _vm._v(" "),
+      _c("td", { staticClass: "p-2" }, [_vm._v(_vm._s(_vm.song.title))]),
+      _vm._v(" "),
+      _vm.displayArtist
+        ? _c("td", { staticClass: "p-2" }, [
+            _vm._v(_vm._s(_vm.song.artist.name))
+          ])
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.displayAlbum
+        ? _c("td", { staticClass: "p-2" }, [
+            _vm._v(_vm._s(_vm.song.album.name))
+          ])
+        : _vm._e(),
+      _vm._v(" "),
+      _c("td", { staticClass: "p-2 w-16" }, [
+        _vm._v(_vm._s(_vm.playtime(_vm.song.length)))
+      ]),
+      _vm._v(" "),
+      _c("td", { staticClass: "p-2 w-16" })
+    ]
+  )
+}
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -19748,6 +19173,7 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('app-sidebar', __webpack_re
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('app-search', __webpack_require__(/*! ../components/Search.vue */ "./resources/js/components/Search.vue")["default"]);
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('app-player', __webpack_require__(/*! ../components/Player.vue */ "./resources/js/components/Player.vue")["default"]);
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('app-playlist', __webpack_require__(/*! ../components/Playlist.vue */ "./resources/js/components/Playlist.vue")["default"]);
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('app-track', __webpack_require__(/*! ../components/Track.vue */ "./resources/js/components/Track.vue")["default"]);
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('app-queue', __webpack_require__(/*! ../components/Queue.vue */ "./resources/js/components/Queue.vue")["default"]);
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('app-cover', __webpack_require__(/*! ../components/Cover.vue */ "./resources/js/components/Cover.vue")["default"]);
 
@@ -19915,9 +19341,7 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Player_vue_vue_type_template_id_11281ee8___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Player.vue?vue&type=template&id=11281ee8& */ "./resources/js/components/Player.vue?vue&type=template&id=11281ee8&");
 /* harmony import */ var _Player_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Player.vue?vue&type=script&lang=js& */ "./resources/js/components/Player.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_plyr_dist_plyr_css_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/plyr/dist/plyr.css?vue&type=style&index=0&lang=css& */ "./node_modules/plyr/dist/plyr.css?vue&type=style&index=0&lang=css&");
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
-
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
 
@@ -19925,7 +19349,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /* normalize component */
 
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
   _Player_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
   _Player_vue_vue_type_template_id_11281ee8___WEBPACK_IMPORTED_MODULE_0__["render"],
   _Player_vue_vue_type_template_id_11281ee8___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
@@ -20230,6 +19654,75 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Sidebar_vue_vue_type_template_id_81fbb27e___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Sidebar_vue_vue_type_template_id_81fbb27e___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/Track.vue":
+/*!*******************************************!*\
+  !*** ./resources/js/components/Track.vue ***!
+  \*******************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Track_vue_vue_type_template_id_04526720___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Track.vue?vue&type=template&id=04526720& */ "./resources/js/components/Track.vue?vue&type=template&id=04526720&");
+/* harmony import */ var _Track_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Track.vue?vue&type=script&lang=js& */ "./resources/js/components/Track.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _Track_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _Track_vue_vue_type_template_id_04526720___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Track_vue_vue_type_template_id_04526720___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/Track.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/Track.vue?vue&type=script&lang=js&":
+/*!********************************************************************!*\
+  !*** ./resources/js/components/Track.vue?vue&type=script&lang=js& ***!
+  \********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Track_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./Track.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Track.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Track_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/Track.vue?vue&type=template&id=04526720&":
+/*!**************************************************************************!*\
+  !*** ./resources/js/components/Track.vue?vue&type=template&id=04526720& ***!
+  \**************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Track_vue_vue_type_template_id_04526720___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./Track.vue?vue&type=template&id=04526720& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Track.vue?vue&type=template&id=04526720&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Track_vue_vue_type_template_id_04526720___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Track_vue_vue_type_template_id_04526720___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

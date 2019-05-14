@@ -1,14 +1,14 @@
 <template>
-    <div class="flex items-center sticky pin-t py-3 px-6 w-full bg-gray-900">
+    <div class="flex items-center sticky pin-t py-3 px-6 w-full bg-gray-900 fixed top-0 shadow-md">
         <div class="flex">
             <div class="flex items-center mr-6">
-                <a href="#" @click.prevent="$router.go(-1)" class="mr-6 text-gray-200 no-underline hover:text-white">
+                <button @click.prevent="$router.go(-1)" class="mr-6 text-gray-200 no-underline hover:text-white focus:outline-none">
                     <i class="fas fa-chevron-left"></i>
-                </a>
+                </button>
 
-                <a href="#" @click.prevent="$router.go(1)" class="mr-6 text-gray-200 no-underline hover:text-white">
+                <button @click.prevent="$router.go(1)" class="mr-6 text-gray-200 no-underline hover:text-white focus:outline-none">
                     <i class="fas fa-chevron-right"></i>
-                </a>
+                </button>
             </div>
 
             <div class="bg-white rounded-full px-2 flex items-center overflow-hidden">

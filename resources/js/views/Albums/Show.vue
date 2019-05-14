@@ -6,7 +6,7 @@
             <div>
                 <!-- <span class="text-xs uppercase block tracking-widest font-semibold mb-1">Album</span> -->
                 <h1 class="font-bold text-5xl text-white leading-none mb-3">{{ album.name }}</h1>
-                <h2 class="text-sm">By <router-link :to="'/artists/' + artist.id" class="hover:underline text-white">{{ artist.name }}</router-link></h2>
+                <h2 class="text-sm">By <router-link tag="button" :to="'/artists/' + artist.id" class="hover:underline text-white focus:outline-none">{{ artist.name }}</router-link></h2>
                 <h3 class="text-sm mb-2">
                     <template v-if="album.year">{{ album.year }}</template>
                     <template v-if="songCount"><span class="mx-1">•</span> {{ songCount }}</template>

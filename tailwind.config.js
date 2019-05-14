@@ -8,6 +8,8 @@ module.exports = {
 
       black: '#000',
       white: '#fff',
+      dark: '#10131A',
+      light: '#f7fafc',
 
       axiom: {
         100: '#FFEBEF',
@@ -31,7 +33,6 @@ module.exports = {
         700: '#4a5568',
         800: '#2d3748',
         900: '#1a202c',
-        1000: '#10131A',
       },
       red: {
         100: '#fff5f5',

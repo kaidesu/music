@@ -10,10 +10,10 @@
                     <div class="w-full">
                         <router-view></router-view>
                     </div>
-                </div>
+                </div>        
             </div>
         </div>
-
+        
         <app-player></app-player>
     </div>
 </template>

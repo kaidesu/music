@@ -1,5 +1,5 @@
 .sidebar {
-    @apply .bg-gray-800 .h-full .overflow-auto .flex .flex-col;
+    @apply .bg-gray-800 .h-full .overflow-y-scroll .overflow-x-hidden .flex .flex-col;
 
     &__container {
         @apply .flex-1 .-mr-4;
@@ -22,6 +22,10 @@
 
         &:hover {
             @apply .text-white;
+        }
+
+        &:focus {
+            @apply outline-none;
         }
 
         &.router-link-exact-active {

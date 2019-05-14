@@ -81,8 +81,8 @@ var render = function() {
               "router-link",
               {
                 staticClass:
-                  "block h-auto w-full rounded mb-2 hover:shadow-lg border-2 border-transparent hover:border-gray-500",
-                attrs: { to: "/albums/" + album.id }
+                  "block h-auto w-full rounded mb-2 hover:shadow-lg border-2 border-transparent hover:border-gray-500 focus:outline-none",
+                attrs: { tag: "button", to: "/albums/" + album.id }
               },
               [
                 _c("img", {
@@ -99,8 +99,8 @@ var render = function() {
                   "router-link",
                   {
                     staticClass:
-                      "text-gray-500 hover:underline font-bold leading-loose",
-                    attrs: { to: "/albums/" + album.id }
+                      "text-gray-500 hover:underline font-bold leading-loose focus:outline-none",
+                    attrs: { tag: "button", to: "/albums/" + album.id }
                   },
                   [_vm._v(_vm._s(album.name))]
                 )
@@ -110,10 +110,10 @@ var render = function() {
             _vm._v(" "),
             _c("p", [
               _c(
-                "a",
+                "button",
                 {
-                  staticClass: "text-gray-600 hover:underline leading-loose",
-                  attrs: { href: "#" }
+                  staticClass:
+                    "text-gray-600 hover:underline leading-loose focus:outline-none"
                 },
                 [_vm._v(_vm._s(album.artist.name))]
               )
