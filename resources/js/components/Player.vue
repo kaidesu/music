@@ -10,10 +10,17 @@
         <div class="w-full flex items-center">
             <audio controls ref="player"></audio>
         </div>
+
+        <div class="flex items-center px-6">
+            <router-link tag="button" to="/queue" class="focus:outline-none text-gray-500">
+                <i class="fas fa-list"></i>
+            </router-link>
+        </div>
     </div>
 </template>
 
 <script>
+    import _ from 'lodash'
     import Plyr from 'plyr'
     import { mapGetters, mapActions } from 'vuex'
 
@@ -25,6 +32,7 @@
                 'player',
                 'source',
                 'song',
+                'queue',
             ]),
         },
 
@@ -37,14 +45,29 @@
         mounted() {
             let player = new Plyr(this.$refs.player, this.opts)
 
+            player.on('ended', function() {
+                let current = _.findIndex(this.queue, function(song) {
+                    return song.id === this.song.id
+                }.bind(this))
+
+                let next = current + 1
+                
+                if (!this.queue[next]) {
+                    next = 0
+                }
+                        
+                this.setSong(this.queue[next])
+            }.bind(this))
+
             this.initialize(player)
         },
         
         methods: {
-            ...mapActions('player', {
-                initialize: 'initialize',
-                play: 'play',
-            }),
+            ...mapActions('player', [
+                'initialize',
+                'play',
+                'setSong',
+            ]),
         },
     }
 </script>

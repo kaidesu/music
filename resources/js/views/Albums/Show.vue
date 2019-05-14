@@ -17,9 +17,7 @@
             </div>
         </div>
 
-        <app-queue>
-            <app-playlist :songs="album.songs"></app-playlist>
-        </app-queue>
+        <app-playlist :songs="songs"></app-playlist>
     </div>
 </template>
 

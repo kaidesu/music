@@ -1,5 +1,6 @@
 import Router from 'vue-router'
 import Vue from 'vue'
+import store from '../vuex'
 
 Vue.use(Router)
 
@@ -17,6 +18,12 @@ const router = new Router({
             path: '/recently-added',
             component: () => import('../views/RecentlyAdded'),
             name: 'recently-added',
+        },
+
+        {
+            path: '/queue',
+            component: () => import('../views/Queue'),
+            name: 'queue',
         },
 
         {
@@ -43,6 +50,15 @@ const router = new Router({
             name: 'album',
         },
     ]
+})
+
+// We want to reset our temp queue before each page
+// This way when we click play, we can properly
+// set our queue based on current tracks.
+router.beforeEach((to, from, next) => {
+    store.dispatch('player/resetTempQueue')
+
+    next()
 })
 
 export default router

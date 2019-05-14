@@ -1,5 +1,5 @@
 <template>
-    <tr class="border-b border-gray-800 hover:bg-gray-700">
+    <tr class="border-b border-gray-800 hover:bg-gray-700" ref="track">
         <td class="p-2 w-10">{{ song.track }}</td>
         <td class="p-2 w-10">
             <i v-if="isCurrentlyPlaying()" class="fas fa-compact-disc fa-spin text-axiom-500"></i>

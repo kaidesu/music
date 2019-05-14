@@ -18,9 +18,9 @@
         },
 
         methods: {
-            addSongs(songs) {
-                console.log('adding songs', songs)
+            addSongs() {
+                console.log('adding songs')
             }
-        }
+        },
     }
 </script>

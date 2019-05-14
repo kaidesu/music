@@ -18,6 +18,8 @@
 </template>
 
 <script>
+    import { mapActions } from 'vuex'
+
     export default {
         name: 'playlist',
 
@@ -36,5 +38,21 @@
                 default: false
             },
         },
+
+        watch: {
+            songs(songs) {
+                this.pushToTempQueue(this.songs)
+            }
+        },
+
+        methods: {
+            ...mapActions('player', [
+                'pushToTempQueue',
+            ])
+        },
+
+        created() {
+            this.pushToTempQueue(this.songs)
+        }
     }
 </script>

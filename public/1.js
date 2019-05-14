@@ -32,8 +32,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'album',
   data: function data() {
@@ -180,11 +178,7 @@ var render = function() {
         ])
       ]),
       _vm._v(" "),
-      _c(
-        "app-queue",
-        [_c("app-playlist", { attrs: { songs: _vm.album.songs } })],
-        1
-      )
+      _c("app-playlist", { attrs: { songs: _vm.songs } })
     ],
     1
   )
