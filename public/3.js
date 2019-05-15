@@ -32,6 +32,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'artist',
   data: function data() {
@@ -94,33 +98,63 @@ var render = function() {
           "div",
           { key: album.id, staticClass: "mb-10" },
           [
-            _c("div", { staticClass: "flex items-end" }, [
-              _c("img", {
-                staticClass: "h-full rounded-lg mr-6",
-                staticStyle: { width: "175px", "max-height": "175px" },
-                attrs: { src: "/" + album.cover, alt: album.name }
-              }),
-              _vm._v(" "),
-              _c("div", [
+            _c(
+              "div",
+              { staticClass: "flex items-end" },
+              [
                 _c(
-                  "span",
+                  "router-link",
                   {
                     staticClass:
-                      "text-xs uppercase block tracking-widest font-semibold mb-1"
+                      "h-auto rounded mb-2 hover:shadow-lg border-2 border-transparent hover:border-gray-500 focus:outline-none mr-6",
+                    attrs: { tag: "button", to: "/albums/" + album.id }
                   },
-                  [_vm._v(_vm._s(album.year))]
+                  [
+                    _c("img", {
+                      staticClass: "h-full rounded-lg",
+                      staticStyle: {
+                        width: "175px",
+                        height: "175px",
+                        "object-fit": "cover"
+                      },
+                      attrs: { src: "/" + album.cover, alt: album.name }
+                    })
+                  ]
                 ),
                 _vm._v(" "),
                 _c(
-                  "h1",
-                  {
-                    staticClass:
-                      "font-bold text-3xl text-white leading-none mb-3"
-                  },
-                  [_vm._v(_vm._s(album.name))]
+                  "div",
+                  [
+                    _c(
+                      "span",
+                      {
+                        staticClass:
+                          "text-xs uppercase block tracking-widest font-semibold mb-2"
+                      },
+                      [_vm._v(_vm._s(album.year))]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "router-link",
+                      {
+                        staticClass:
+                          "font-bold text-3xl text-white leading-none mb-3 focus:outline-none hover:underline",
+                        attrs: { tag: "button", to: "/albums/" + album.id }
+                      },
+                      [
+                        _vm._v(
+                          "\n                    " +
+                            _vm._s(album.name) +
+                            "\n                "
+                        )
+                      ]
+                    )
+                  ],
+                  1
                 )
-              ])
-            ]),
+              ],
+              1
+            ),
             _vm._v(" "),
             _c("app-playlist", { attrs: { songs: album.songs } })
           ],

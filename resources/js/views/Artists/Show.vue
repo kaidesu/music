@@ -7,11 +7,15 @@
         <h3 class="font-bold text-lg text-white leading-none mb-6 border-b border-gray-800 py-3">Library</h3>
         <div class="mb-10" v-for="album in artist.albums" :key="album.id">
             <div class="flex items-end">
-                <img :src="'/' + album.cover" :alt="album.name" class="h-full rounded-lg mr-6" style="width: 175px; max-height: 175px;">
+                <router-link tag="button" :to="'/albums/' + album.id" class="h-auto rounded mb-2 hover:shadow-lg border-2 border-transparent hover:border-gray-500 focus:outline-none mr-6">
+                    <img :src="'/' + album.cover" :alt="album.name" class="h-full rounded-lg" style="width: 175px; height: 175px; object-fit: cover;">
+                </router-link>
 
                 <div>
-                    <span class="text-xs uppercase block tracking-widest font-semibold mb-1">{{ album.year }}</span>
-                    <h1 class="font-bold text-3xl text-white leading-none mb-3">{{ album.name }}</h1>
+                    <span class="text-xs uppercase block tracking-widest font-semibold mb-2">{{ album.year }}</span>
+                    <router-link tag="button" :to="'/albums/' + album.id" class="font-bold text-3xl text-white leading-none mb-3 focus:outline-none hover:underline">
+                        {{ album.name }}
+                    </router-link>
                     <!-- <h3 class="text-sm">2008 <span class="mx-1">•</span> 10 songs <span class="mx-1">•</span> 55 min <span class="mx-1">•</span> J-Rock</h3> -->
                 </div>
             </div>

@@ -86,7 +86,14 @@ var render = function() {
               },
               [
                 _c("img", {
-                  staticClass: "h-auto w-full rounded",
+                  staticClass: "h-full w-full rounded",
+                  staticStyle: {
+                    "max-width": "100%",
+                    "max-height": "100%",
+                    height: "100%",
+                    width: "100%",
+                    "object-fit": "cover"
+                  },
                   attrs: { src: "/" + album.cover, alt: album.name }
                 })
               ]
