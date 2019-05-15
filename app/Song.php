@@ -11,7 +11,7 @@ class Song extends Model
      *
      * @var array
      */
-    protected $fillable = ['album_id', 'title', 'track', 'disc', 'length', 'path', 'mtime'];
+    protected $fillable = ['album_id', 'title', 'track', 'disc', 'length', 'path', 'mtime', 'explicit', 'compilation'];
 
     /**
      * A song belongs to an album.

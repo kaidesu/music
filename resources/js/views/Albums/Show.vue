@@ -17,7 +17,7 @@
             </div>
         </div>
 
-        <app-playlist :songs="songs"></app-playlist>
+        <app-playlist :songs="songs" separate-discs></app-playlist>
     </div>
 </template>
 
