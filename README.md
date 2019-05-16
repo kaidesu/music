@@ -22,7 +22,8 @@ Self-hosted personal music server built using web technologies. Upload your audi
 - [x] Scan media
 - [x] Navigate between artists and albums
 - [x] Play audio
-- [ ] Play queued items
+- [x] Play queued items
+- [x] Search Library
 - [ ] Create custom playlists
 - [ ] User account(s)
 - [ ] Mobile friendly
