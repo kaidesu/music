@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use Arr;
 use getID3;
 use Storage;
 use App\Song;
@@ -58,8 +59,12 @@ class ScanForMusic extends Command
     {
         $files = $this->getUploads();
 
+        $bar       = $this->output->createProgressBar(count($files));
+        $processed = 0;
+        
+        $bar->start();
+
         foreach ($files as $file) {
-            
             $meta = $this->getID3->analyze($file);
 
             getid3_lib::CopyTagsToComments($meta);
@@ -85,8 +90,14 @@ class ScanForMusic extends Command
                 $song->compilation = $data->get('compilation');
                 
                 $album->songs()->save($song);
+                $processed++;
             }
+
+            $bar->advance();
         }
+
+        $bar->finish();
+        $this->info("\n".'Complete! Processed '.$processed.' file(s).');
     }
 
     private function buildSongData($file, $meta)
@@ -172,7 +183,7 @@ class ScanForMusic extends Command
             $album = $artist->albums()->save($album);
         }
 
-        $cover = $meta['comments']['picture'];
+        $cover = Arr::get($meta, 'comments.picture', null);
 
         if ($cover) {
             $extension = explode('/', $cover[0]['image_mime'])[1];
@@ -203,7 +214,7 @@ class ScanForMusic extends Command
         ];
 
         for ($i = 0; $i < count($possibleKeys) and $trackNumber === 0; $i++) {
-            $trackNumber = array_get($meta, $possibleKeys[$i], [0])[0];
+            $trackNumber = Arr::get($meta, $possibleKeys[$i][0], 0);
         }
 
         return sprintf("%02d", $trackNumber);
@@ -211,7 +222,7 @@ class ScanForMusic extends Command
 
     private function extractDiscNumber($meta)
     {
-        $discNumber = array_get($meta, 'comments.part_of_a_set', [0])[0] ?? 1;
+        $discNumber = Arr::get($meta, 'comments.part_of_a_set.0', 1);
         $discNumber = (int) $discNumber;
 
         if ($discNumber === 0) {
