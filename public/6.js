@@ -27,7 +27,23 @@ var staticRenderFns = [
         "h1",
         { staticClass: "font-bold text-5xl text-white leading-none mb-20" },
         [_vm._v("Browse")]
-      )
+      ),
+      _vm._v(" "),
+      _c("h2", { staticClass: "font-bold text-axiom-500 text-2xl" }, [
+        _vm._v("Planned For Page")
+      ]),
+      _vm._v(" "),
+      _c("ul", [
+        _c("li", [_vm._v("Row 1, Full Width - Last 6 listened albums")]),
+        _vm._v(" "),
+        _c("li", [_vm._v("Row 2, Full Width - Last 6 added albums")]),
+        _vm._v(" "),
+        _c("li", [_vm._v("Row 3, Third Width - Top 10 played songs")]),
+        _vm._v(" "),
+        _c("li", [_vm._v("Row 3, Third Width - Top 10 played artists")]),
+        _vm._v(" "),
+        _c("li", [_vm._v("Row 3, Third Width - Top 10 played albums")])
+      ])
     ])
   }
 ]

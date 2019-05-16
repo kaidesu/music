@@ -171,8 +171,8 @@ class ScanForMusic extends Command
     private function findOrCreateAlbum($artist, $name, $meta)
     {
         if (! $album = $artist->albums()->where('name', $name)->first()) {
-            $genre = optional($meta['tags']['id3v2'])['genre'][0];
-            $year  = optional($meta['tags']['id3v2'])['year'][0];
+            $genre = optional($meta['comments'])['genre'][0];
+            $year  = optional($meta['comments'])['year'][0];
 
             $album = new Album;
             
