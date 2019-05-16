@@ -11,11 +11,17 @@
                 </button>
             </div>
 
-            <div @blur="unfocus" @keydown.esc.prevent="blur">
+            <div @blur="blur" @keydown.esc.prevent="blur">
                 <div class="bg-white rounded-full px-2 flex items-center overflow-hidden">
-                    <i class="fas fa-search mr-2 text-gray-800"></i>
+                    <i class="fas fa-search mr-2" :class="{
+                        'text-axiom-500': focused,
+                        'text-gray-500': !focused,
+                    }"></i>
 
-                    <input type="text" id="search" ref="search" class="py-1 text-sm text-black outline-none" placeholder="Search" v-model="query" @focus="focus">
+                    <input type="text" id="search" ref="search" class="py-1 text-sm outline-none" :class="{
+                        'text-gray-600': focused,
+                        'text-gray-500': !focused,
+                    }" placeholder="Search" v-model="query" @focus="focus">
                 </div>
 
                 <div class="absolute z-50 bg-white mt-3 p-3 rounded shadow max-w-md w-full" v-if="focused">
@@ -24,7 +30,7 @@
                             <span class="uppercase text-gray-800 text-xs font-bold">{{ type }}</span>
                             <ul>
                                 <li v-for="result in results.slice(0, 10)" :key="result.id" class="text-black" @click="unfocus">
-                                    <router-link :to="result.resource.url" class="focus:outline-none" @click="unfocus">{{ result.resource.title }}</router-link>
+                                    <router-link :to="result.resource.url" class="focus:outline-none">{{ result.resource.title }}</router-link>
                                 </li>
                             </ul>
                         </div>

@@ -2174,6 +2174,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -21456,7 +21462,7 @@ var render = function() {
           "div",
           {
             on: {
-              blur: _vm.unfocus,
+              blur: _vm.blur,
               keydown: function($event) {
                 if (
                   !$event.type.indexOf("key") &&
@@ -21480,7 +21486,13 @@ var render = function() {
                   "bg-white rounded-full px-2 flex items-center overflow-hidden"
               },
               [
-                _c("i", { staticClass: "fas fa-search mr-2 text-gray-800" }),
+                _c("i", {
+                  staticClass: "fas fa-search mr-2",
+                  class: {
+                    "text-axiom-500": _vm.focused,
+                    "text-gray-500": !_vm.focused
+                  }
+                }),
                 _vm._v(" "),
                 _c("input", {
                   directives: [
@@ -21492,7 +21504,11 @@ var render = function() {
                     }
                   ],
                   ref: "search",
-                  staticClass: "py-1 text-sm text-black outline-none",
+                  staticClass: "py-1 text-sm outline-none",
+                  class: {
+                    "text-gray-600": _vm.focused,
+                    "text-gray-500": !_vm.focused
+                  },
                   attrs: { type: "text", id: "search", placeholder: "Search" },
                   domProps: { value: _vm.query },
                   on: {
@@ -21550,8 +21566,7 @@ var render = function() {
                                           "router-link",
                                           {
                                             staticClass: "focus:outline-none",
-                                            attrs: { to: result.resource.url },
-                                            on: { click: _vm.unfocus }
+                                            attrs: { to: result.resource.url }
                                           },
                                           [
                                             _vm._v(
