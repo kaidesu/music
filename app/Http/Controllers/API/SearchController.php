@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\API;
 
+use App\Song;
+use App\Album;
 use App\Artist;
 use Illuminate\Http\Request;
 use Spatie\Searchable\Search;
@@ -14,6 +16,8 @@ class SearchController extends Controller
     {
         $results = (new Search)
             ->registerModel(Artist::class, ['name'])
+            ->registerModel(Album::class, ['name'])
+            ->registerModel(Song::class, ['title'])
             ->search($query);
         
         return SearchResource::collection($results);

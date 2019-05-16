@@ -70,6 +70,9 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   methods: {
+    setAlbum: function setAlbum(album) {
+      this.album = album;
+    },
     playtime: function playtime(length) {
       var seconds = Math.floor(length);
       var minutes = Math.floor(seconds / 60);
@@ -80,9 +83,15 @@ __webpack_require__.r(__webpack_exports__);
   beforeRouteEnter: function beforeRouteEnter(to, from, next) {
     axios.all([axios.get('/api/albums/' + to.params.id)]).then(axios.spread(function (album) {
       next(function (vm) {
-        vm.album = album.data.data;
+        vm.setAlbum(album.data.data);
       });
     }));
+  },
+  beforeRouteUpdate: function beforeRouteUpdate(to, from, next) {
+    axios.all([axios.get('/api/albums/' + to.params.id)]).then(axios.spread(function (album) {
+      this.setAlbum(album.data.data);
+      next();
+    }.bind(this)));
   }
 });
 

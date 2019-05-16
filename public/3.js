@@ -43,12 +43,23 @@ __webpack_require__.r(__webpack_exports__);
       artist: {}
     };
   },
+  methods: {
+    setArtist: function setArtist(artist) {
+      this.artist = artist;
+    }
+  },
   beforeRouteEnter: function beforeRouteEnter(to, from, next) {
     axios.all([axios.get('/api/artists/' + to.params.id)]).then(axios.spread(function (artist) {
       next(function (vm) {
-        vm.artist = artist.data.data;
+        vm.setArtist(artist.data.data);
       });
     }));
+  },
+  beforeRouteUpdate: function beforeRouteUpdate(to, from, next) {
+    axios.all([axios.get('/api/artists/' + to.params.id)]).then(axios.spread(function (artist) {
+      this.setArtist(artist.data.data);
+      next();
+    }.bind(this)));
   }
 });
 

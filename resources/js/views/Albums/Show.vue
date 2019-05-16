@@ -66,6 +66,10 @@
         },
 
         methods: {
+            setAlbum(album) {
+                this.album = album
+            },
+
             playtime(length) {
                 let seconds = Math.floor(length)
                 let minutes = Math.floor(seconds / 60)
@@ -81,9 +85,19 @@
                 axios.get('/api/albums/' + to.params.id),
             ]).then(axios.spread(function(album) {
                 next(function(vm) {
-                    vm.album = album.data.data
+                    vm.setAlbum(album.data.data)
                 })
             }))
+        },
+
+        beforeRouteUpdate(to, from, next) {
+            axios.all([
+                axios.get('/api/albums/' + to.params.id),
+            ]).then(axios.spread(function(album) {
+                this.setAlbum(album.data.data)
+
+                next()
+            }.bind(this)))
         },
     }
 </script>

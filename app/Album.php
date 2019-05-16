@@ -2,10 +2,21 @@
 
 namespace App;
 
+use Spatie\Searchable\Searchable;
+use Spatie\Searchable\SearchResult;
 use Illuminate\Database\Eloquent\Model;
 
-class Album extends Model
+class Album extends Model implements Searchable
 {
+    /**
+     * Format the searchable result for the model.
+     * 
+     */
+    public function getSearchResult(): SearchResult
+    {
+        return new SearchResult($this, $this->name, "/albums/{$this->id}");
+    }
+
     /**
      * An album belongs to an artist.
      * 

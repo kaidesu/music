@@ -2159,12 +2159,33 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       query: null,
+      focused: false,
       results: []
     };
+  },
+  computed: {
+    types: function types() {
+      return _.groupBy(this.results, 'resource.type');
+    }
   },
   watch: {
     query: function query(after, before) {
@@ -2178,6 +2199,16 @@ __webpack_require__.r(__webpack_exports__);
       axios.get('/api/search/' + this.query).then(function (response) {
         return _this.results = response.data.data;
       })["catch"](function (error) {});
+    },
+    focus: function focus() {
+      this.focused = true;
+    },
+    unfocus: function unfocus() {
+      this.focused = false;
+    },
+    blur: function blur() {
+      this.unfocus();
+      this.$refs.search.blur();
     }
   }
 });
@@ -21424,57 +21455,139 @@ var render = function() {
         _c(
           "div",
           {
-            staticClass:
-              "bg-white rounded-full px-2 flex items-center overflow-hidden"
+            on: {
+              blur: _vm.unfocus,
+              keydown: function($event) {
+                if (
+                  !$event.type.indexOf("key") &&
+                  _vm._k($event.keyCode, "esc", 27, $event.key, [
+                    "Esc",
+                    "Escape"
+                  ])
+                ) {
+                  return null
+                }
+                $event.preventDefault()
+                return _vm.blur($event)
+              }
+            }
           },
           [
-            _c("i", { staticClass: "fas fa-search mr-2 text-gray-800" }),
-            _vm._v(" "),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.query,
-                  expression: "query"
-                }
-              ],
-              staticClass: "py-1 text-sm text-black outline-none",
-              attrs: { type: "text", id: "search", placeholder: "Search" },
-              domProps: { value: _vm.query },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
+            _c(
+              "div",
+              {
+                staticClass:
+                  "bg-white rounded-full px-2 flex items-center overflow-hidden"
+              },
+              [
+                _c("i", { staticClass: "fas fa-search mr-2 text-gray-800" }),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.query,
+                      expression: "query"
+                    }
+                  ],
+                  ref: "search",
+                  staticClass: "py-1 text-sm text-black outline-none",
+                  attrs: { type: "text", id: "search", placeholder: "Search" },
+                  domProps: { value: _vm.query },
+                  on: {
+                    focus: _vm.focus,
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.query = $event.target.value
+                    }
                   }
-                  _vm.query = $event.target.value
-                }
-              }
-            })
+                })
+              ]
+            ),
+            _vm._v(" "),
+            _vm.focused
+              ? _c(
+                  "div",
+                  {
+                    staticClass:
+                      "absolute z-50 bg-white mt-3 p-3 rounded shadow max-w-md w-full"
+                  },
+                  [
+                    _vm.results && _vm.query
+                      ? _c(
+                          "div",
+                          _vm._l(_vm.types, function(results, type) {
+                            return _c(
+                              "div",
+                              { key: type, staticClass: "mb-4" },
+                              [
+                                _c(
+                                  "span",
+                                  {
+                                    staticClass:
+                                      "uppercase text-gray-800 text-xs font-bold"
+                                  },
+                                  [_vm._v(_vm._s(type))]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "ul",
+                                  _vm._l(results.slice(0, 10), function(
+                                    result
+                                  ) {
+                                    return _c(
+                                      "li",
+                                      {
+                                        key: result.id,
+                                        staticClass: "text-black",
+                                        on: { click: _vm.unfocus }
+                                      },
+                                      [
+                                        _c(
+                                          "router-link",
+                                          {
+                                            staticClass: "focus:outline-none",
+                                            attrs: { to: result.resource.url },
+                                            on: { click: _vm.unfocus }
+                                          },
+                                          [
+                                            _vm._v(
+                                              _vm._s(result.resource.title)
+                                            )
+                                          ]
+                                        )
+                                      ],
+                                      1
+                                    )
+                                  }),
+                                  0
+                                )
+                              ]
+                            )
+                          }),
+                          0
+                        )
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _vm.results.length == 0 && _vm.query
+                      ? _c("div", { staticClass: "text-xs text-black" }, [
+                          _c("p", [_vm._v("Nothing found :(")])
+                        ])
+                      : _vm._e(),
+                    _vm._v(" "),
+                    !_vm.query
+                      ? _c("div", { staticClass: "text-xs text-black" }, [
+                          _c("p", [_vm._v("Looking for something?")])
+                        ])
+                      : _vm._e()
+                  ]
+                )
+              : _vm._e()
           ]
-        ),
-        _vm._v(" "),
-        _vm.results.length > 0 && _vm.query
-          ? _c("div", { staticClass: "absolute mt-20 ml-20 z-50 bg-white" }, [
-              _c(
-                "ul",
-                _vm._l(_vm.results.slice(0, 10), function(result) {
-                  return _c(
-                    "li",
-                    { key: result.id, staticClass: "text-black" },
-                    [
-                      _vm._v(
-                        "\n                    " +
-                          _vm._s(result.resource.title) +
-                          "\n                "
-                      )
-                    ]
-                  )
-                }),
-                0
-              )
-            ])
-          : _vm._e()
+        )
       ])
     ]
   )

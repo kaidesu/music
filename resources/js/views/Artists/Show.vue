@@ -35,14 +35,30 @@
             }
         },
 
+        methods: {
+            setArtist(artist) {
+                this.artist = artist
+            },
+        },
+
         beforeRouteEnter(to, from, next) {
             axios.all([
                 axios.get('/api/artists/' + to.params.id),
             ]).then(axios.spread(function(artist) {
                 next(function(vm) {
-                    vm.artist = artist.data.data
+                    vm.setArtist(artist.data.data)
                 })
             }))
         },
+
+        beforeRouteUpdate(to, from, next) {
+            axios.all([
+                axios.get('/api/artists/' + to.params.id),
+            ]).then(axios.spread(function(artist) {
+                this.setArtist(artist.data.data)
+
+                next()
+            }.bind(this)))
+        }
     }
 </script>

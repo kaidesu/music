@@ -11,18 +11,33 @@
                 </button>
             </div>
 
-            <div class="bg-white rounded-full px-2 flex items-center overflow-hidden">
-                <i class="fas fa-search mr-2 text-gray-800"></i>
+            <div @blur="unfocus" @keydown.esc.prevent="blur">
+                <div class="bg-white rounded-full px-2 flex items-center overflow-hidden">
+                    <i class="fas fa-search mr-2 text-gray-800"></i>
 
-                <input type="text" id="search" class="py-1 text-sm text-black outline-none" placeholder="Search" v-model="query">
-            </div>
+                    <input type="text" id="search" ref="search" class="py-1 text-sm text-black outline-none" placeholder="Search" v-model="query" @focus="focus">
+                </div>
 
-            <div class="absolute mt-20 ml-20 z-50 bg-white" v-if="results.length > 0 && query">
-                <ul>
-                    <li v-for="result in results.slice(0, 10)" :key="result.id" class="text-black">
-                        {{ result.resource.title }}
-                    </li>
-                </ul>
+                <div class="absolute z-50 bg-white mt-3 p-3 rounded shadow max-w-md w-full" v-if="focused">
+                    <div v-if="results && query">
+                        <div v-for="(results, type) in types" :key="type" class="mb-4">
+                            <span class="uppercase text-gray-800 text-xs font-bold">{{ type }}</span>
+                            <ul>
+                                <li v-for="result in results.slice(0, 10)" :key="result.id" class="text-black" @click="unfocus">
+                                    <router-link :to="result.resource.url" class="focus:outline-none" @click="unfocus">{{ result.resource.title }}</router-link>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div v-if="results.length == 0 && query" class="text-xs text-black">
+                        <p>Nothing found :(</p>
+                    </div>
+
+                    <div v-if="! query" class="text-xs text-black">
+                        <p>Looking for something?</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -33,7 +48,14 @@
         data() {
             return {
                 query: null,
+                focused: false,
                 results: [],
+            }
+        },
+
+        computed: {
+            types() {
+                return _.groupBy(this.results, 'resource.type')
             }
         },
 
@@ -48,6 +70,20 @@
                 axios.get('/api/search/' + this.query)
                     .then(response => this.results = response.data.data)
                     .catch(error => {})
+            },
+
+            focus() {
+                this.focused = true
+            },
+
+            unfocus() {
+                this.focused = false
+            },
+
+            blur() {
+                this.unfocus()
+
+                this.$refs.search.blur()
             }
         }
     }
