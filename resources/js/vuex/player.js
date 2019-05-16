@@ -44,6 +44,18 @@ export default {
             state.player.play()
         },
 
+        TOGGLE_PLAY(state) {
+            state.player.togglePlay()
+        },
+
+        INCREASE_VOLUME(state) {
+            state.player.increaseVolume()
+        },
+
+        DECREASE_VOLUME(state) {
+            state.player.decreaseVolume()
+        },
+
         SET_SONG(state, payload) {
             state.song = payload.song
             state.source = '/api/stream/' + payload.song.id
@@ -119,6 +131,10 @@ export default {
             commit('PUSH_TEMPQUEUE', {
                 queue: songs
             })
+        },
+
+        togglePlay({ commit }) {
+            commit('TOGGLE_PLAY')
         },
     },
 }

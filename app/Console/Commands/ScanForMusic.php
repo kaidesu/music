@@ -70,7 +70,7 @@ class ScanForMusic extends Command
             getid3_lib::CopyTagsToComments($meta);
 
             $data = $this->buildSongData($file, $meta);
-            
+
             if (! Song::where('path', $data->get('fullPath'))->first()) {
                 $this->filesystem->mkdir($data->get('path'));
                 $this->filesystem->copy($file, $data->get('fullPath'));
@@ -208,13 +208,15 @@ class ScanForMusic extends Command
     {
         $trackNumber  = 0;
         $possibleKeys = [
-            'comments.track',
-            'comments.tracknumber',
-            'comments.track_number'
+            'comments.track.0',
+            'comments.tracknumber.0',
+            'comments.track_number.0'
         ];
 
+        // dd(Arr::get($meta, 'comments.track_number.0'));
+
         for ($i = 0; $i < count($possibleKeys) and $trackNumber === 0; $i++) {
-            $trackNumber = Arr::get($meta, $possibleKeys[$i][0], 0);
+            $trackNumber = array_get($meta, $possibleKeys[$i], 0);
         }
 
         return sprintf("%02d", $trackNumber);

@@ -14,7 +14,7 @@
             <div class="bg-white rounded-full px-2 flex items-center overflow-hidden">
                 <i class="fas fa-search mr-2 text-gray-800"></i>
 
-                <input type="text" class="py-1 text-sm text-black outline-none" placeholder="Search">
+                <input type="text" id="search" class="py-1 text-sm text-black outline-none" placeholder="Search">
             </div>
         </div>
     </div>
