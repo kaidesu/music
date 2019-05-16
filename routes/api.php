@@ -21,3 +21,5 @@ Route::get('/artists/{artist}', 'API\ArtistController@show');
 
 Route::get('/albums', 'API\AlbumController@index');
 Route::get('/albums/{album}', 'API\AlbumController@show');
+
+Route::get('/search/{query?}', 'API\SearchController@index');

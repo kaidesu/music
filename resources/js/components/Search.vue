@@ -14,8 +14,41 @@
             <div class="bg-white rounded-full px-2 flex items-center overflow-hidden">
                 <i class="fas fa-search mr-2 text-gray-800"></i>
 
-                <input type="text" id="search" class="py-1 text-sm text-black outline-none" placeholder="Search">
+                <input type="text" id="search" class="py-1 text-sm text-black outline-none" placeholder="Search" v-model="query">
+            </div>
+
+            <div class="absolute mt-20 ml-20 z-50 bg-white" v-if="results.length > 0 && query">
+                <ul>
+                    <li v-for="result in results.slice(0, 10)" :key="result.id" class="text-black">
+                        {{ result.resource.title }}
+                    </li>
+                </ul>
             </div>
         </div>
     </div>
 </template>
+
+<script>
+    export default {
+        data() {
+            return {
+                query: null,
+                results: [],
+            }
+        },
+
+        watch: {
+            query(after, before) {
+                this.search()
+            },
+        },
+
+        methods: {
+            search() {
+                axios.get('/api/search/' + this.query)
+                    .then(response => this.results = response.data.data)
+                    .catch(error => {})
+            }
+        }
+    }
+</script>
