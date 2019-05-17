@@ -105,7 +105,7 @@ class ScanForMusic extends Command
         $song = collect([
             'length'      => $meta['playtime_seconds'],
             'mtime'       => $file->getmTime(),
-            'artist'      => $this->convertEncoding($meta['comments']['artist'][0] ?? 'Unknown Artist'),
+            'artist'      => $this->convertEncoding(($meta['comments']['band'][0] ?? $meta['comments']['artist'][0]) ?? 'Unknown Artist'),
             'album'       => $this->convertEncoding($meta['comments']['album'][0] ?? 'Unknown Album'),
             'title'       => $this->convertEncoding($meta['comments']['title'][0] ?? $file->getFilename()),
             'disc'        => $this->extractDiscNumber($meta),
