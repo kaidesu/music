@@ -21070,7 +21070,7 @@ var render = function() {
     "div",
     {
       staticClass:
-        "bg-gray-900 min-h-screen h-screen overflow-hidden font-sans flex flex-col text-gray-400"
+        "bg-gray-500 min-h-screen h-screen overflow-hidden font-sans flex flex-col text-gray-400"
     },
     [
       _c(
@@ -21168,7 +21168,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "bg-gray-800 w-full flex" }, [
+  return _c("div", { staticClass: "bg-gray-700 w-full flex" }, [
     _c(
       "div",
       {
@@ -21422,7 +21422,7 @@ var render = function() {
     "div",
     {
       staticClass:
-        "flex items-center sticky pin-t py-3 px-6 w-full bg-gray-900 fixed top-0 shadow-md"
+        "flex items-center sticky pin-t py-3 px-6 w-full bg-gray-500 fixed top-0"
     },
     [
       _c("div", { staticClass: "flex" }, [

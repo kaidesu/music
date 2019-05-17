@@ -1,5 +1,5 @@
 <template>
-    <div class="bg-gray-800 w-full flex">
+    <div class="bg-gray-700 w-full flex">
         <div style="width: 200px;" class="block flex flex-col flex-shrink-0 h-20 justify-center text-xs px-3">
             <div v-if="song" class="truncate">
                 <router-link tag="button" :to="'/albums/' + song.album.id" class="block focus:outline-none hover:underline text-white">{{ song.title }}</router-link>
