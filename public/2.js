@@ -87,7 +87,7 @@ var render = function() {
               },
               [
                 _c("div", {
-                  staticClass: "rounded w-full bg-dark block",
+                  staticClass: "rounded w-full bg-gray-600 block",
                   staticStyle: { height: "220px" }
                 })
               ]
@@ -100,7 +100,7 @@ var render = function() {
                   "router-link",
                   {
                     staticClass:
-                      "text-gray-500 hover:underline font-bold leading-loose focus:outline-none",
+                      "text-light-gray-500 hover:underline font-bold leading-loose focus:outline-none",
                     attrs: { tag: "button", to: "/artists/" + artist.id }
                   },
                   [_vm._v(_vm._s(artist.name))]

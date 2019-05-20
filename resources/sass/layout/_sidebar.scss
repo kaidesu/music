@@ -14,11 +14,11 @@
     }
 
     &__label {
-        @apply .px-4 .py-1 .my-3 .border-l-4 .border-transparent .text-gray-400 .text-xs .uppercase .tracking-widest;
+        @apply .px-4 .py-1 .my-3 .border-l-4 .border-transparent .text-white .text-xs .uppercase .tracking-widest;
     }
 
     &__link {
-        @apply .block .font-semibold .px-4 .py-1 .border-l-4 .border-transparent .no-underline .text-gray-200 .text-sm .tracking-wider;
+        @apply .block .px-4 .py-1 .border-l-4 .border-transparent .no-underline .text-light-gray-500 .text-sm .tracking-wider;
 
         &:hover {
             @apply .text-white;
@@ -29,7 +29,7 @@
         }
 
         &.router-link-exact-active {
-            @apply .border-axiom-500;
+            @apply .border-red-500 .text-red-500 .font-semibold;
         }
     }
 }

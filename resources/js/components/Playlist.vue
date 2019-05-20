@@ -1,8 +1,10 @@
 <template>
     <div>
+        <p class="text-red-500">playlist</p>
+
         <div v-if="separateDiscs">
             <div v-for="(songs, disc) in discs" :key="disc" class="mt-6">
-                <div v-if="hasMultipleDiscs" class="mb-2 text-xl font-bold">
+                <div v-if="hasMultipleDiscs" class="mb-2 text-xl font-bold text-white">
                     Disc {{ disc }}
                 </div>
 
@@ -26,6 +28,7 @@
         </div>
 
         <div v-else>
+            <p class="text-red-500">TEST</p>
             <table class="w-full mb-10">
                 <thead class="text-xs uppercase text-left">
                     <tr class="border-b border-gray-800 text-gray-600">

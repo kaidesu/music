@@ -37,6 +37,12 @@
                 <li class="sidebar__label">
                     Playlists
                 </li>
+
+                <li class="sidebar__item">
+                    <router-link tag="button" to="#" class="text-red-50 block px-4 py-1 bg-red-500 px-6 py-2 rounded text-xs tracking-wider uppercase ml-4 font-bold">
+                        New Playlist
+                    </router-link>
+                </li>
             </ul>
         </div>
 

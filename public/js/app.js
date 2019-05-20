@@ -2069,6 +2069,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2276,6 +2279,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'app-sidebar',
   data: function data() {
@@ -2301,6 +2310,10 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+//
+//
+//
+//
 //
 //
 //
@@ -21254,19 +21267,25 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
+    _c("p", { staticClass: "text-red-500" }, [_vm._v("playlist")]),
+    _vm._v(" "),
     _vm.separateDiscs
       ? _c(
           "div",
           _vm._l(_vm.discs, function(songs, disc) {
             return _c("div", { key: disc, staticClass: "mt-6" }, [
               _vm.hasMultipleDiscs
-                ? _c("div", { staticClass: "mb-2 text-xl font-bold" }, [
-                    _vm._v(
-                      "\n                Disc " +
-                        _vm._s(disc) +
-                        "\n            "
-                    )
-                  ])
+                ? _c(
+                    "div",
+                    { staticClass: "mb-2 text-xl font-bold text-white" },
+                    [
+                      _vm._v(
+                        "\n                Disc " +
+                          _vm._s(disc) +
+                          "\n            "
+                      )
+                    ]
+                  )
                 : _vm._e(),
               _vm._v(" "),
               _c("table", { staticClass: "w-full mb-10" }, [
@@ -21317,6 +21336,8 @@ var render = function() {
           0
         )
       : _c("div", [
+          _c("p", { staticClass: "text-red-500" }, [_vm._v("TEST")]),
+          _vm._v(" "),
           _c("table", { staticClass: "w-full mb-10" }, [
             _c("thead", { staticClass: "text-xs uppercase text-left" }, [
               _c(
@@ -21710,7 +21731,28 @@ var render = function() {
           )
         ]),
         _vm._v(" "),
-        _vm._m(0)
+        _c("ul", { staticClass: "mt-8" }, [
+          _c("li", { staticClass: "sidebar__label" }, [
+            _vm._v("\n                Playlists\n            ")
+          ]),
+          _vm._v(" "),
+          _c(
+            "li",
+            { staticClass: "sidebar__item" },
+            [
+              _c(
+                "router-link",
+                {
+                  staticClass:
+                    "text-red-50 block px-4 py-1 bg-red-500 px-6 py-2 rounded text-xs tracking-wider uppercase ml-4 font-bold",
+                  attrs: { tag: "button", to: "#" }
+                },
+                [_vm._v("\n                    New Playlist\n                ")]
+              )
+            ],
+            1
+          )
+        ])
       ]),
       _vm._v(" "),
       _c("app-cover")
@@ -21718,18 +21760,7 @@ var render = function() {
     1
   )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("ul", { staticClass: "mt-8" }, [
-      _c("li", { staticClass: "sidebar__label" }, [
-        _vm._v("\n                Playlists\n            ")
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -21753,11 +21784,18 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "tr",
-    { ref: "track", staticClass: "border-b border-gray-800 hover:bg-gray-700" },
+    {
+      ref: "track",
+      staticClass: "text-light-gray-500 border-b border-red-500"
+    },
     [
-      _c("td", { staticClass: "p-2 w-10" }, [_vm._v(_vm._s(_vm.song.track))]),
+      _c("td", { staticClass: "pl-4 pb-10 w-10" }, [
+        _c("div", { staticClass: "w-full bg-red-500" }, [
+          _vm._v("\n            " + _vm._s(_vm.song.track) + "\n        ")
+        ])
+      ]),
       _vm._v(" "),
-      _c("td", { staticClass: "p-2 w-10" }, [
+      _c("td", { staticClass: "p-4 w-10" }, [
         _vm.isCurrentlyPlaying()
           ? _c("i", {
               staticClass: "fas fa-compact-disc fa-spin text-axiom-500"
@@ -21781,12 +21819,12 @@ var render = function() {
             )
       ]),
       _vm._v(" "),
-      _c("td", { staticClass: "p-2" }, [_vm._v(_vm._s(_vm.song.title))]),
+      _c("td", { staticClass: "p-4" }, [_vm._v(_vm._s(_vm.song.title))]),
       _vm._v(" "),
       _vm.displayArtist
         ? _c(
             "td",
-            { staticClass: "p-2" },
+            { staticClass: "p-4" },
             [
               _c(
                 "router-link",
@@ -21804,7 +21842,7 @@ var render = function() {
       _vm.displayAlbum
         ? _c(
             "td",
-            { staticClass: "p-2" },
+            { staticClass: "p-4" },
             [
               _c(
                 "router-link",
@@ -21819,11 +21857,11 @@ var render = function() {
           )
         : _vm._e(),
       _vm._v(" "),
-      _c("td", { staticClass: "p-2 w-16" }, [
+      _c("td", { staticClass: "p-4 w-16" }, [
         _vm._v(_vm._s(_vm.playtime(_vm.song.length)))
       ]),
       _vm._v(" "),
-      _c("td", { staticClass: "p-2 w-16" })
+      _c("td", { staticClass: "p-4 w-16" })
     ]
   )
 }
