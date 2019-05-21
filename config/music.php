@@ -2,8 +2,10 @@
 
 return [
 
-    'media_path' => storage_path('media'),
+    'use_cloud' => env('USE_CLOUD', false),
+ 
+    'media_path' => env('MEDIA_PATH', 'media'),
 
-    'upload_path' => storage_path('uploads'),
+    'upload_path' => env('UPLOAD_PATH', 'uploads'),
 
 ];

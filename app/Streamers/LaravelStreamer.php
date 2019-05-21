@@ -13,7 +13,12 @@ class LaravelStreamer extends Streamer
      */
     public function stream()
     {
-        $response = new BinaryFileResponse($this->song->path);
+        if (config('music.use_cloud')) {
+            return;
+        }
+
+        $path     = storage_path('app/'.$this->song->path);
+        $response = new BinaryFileResponse($path);
 
         BinaryFileResponse::trustXSendfileTypeHeader();
 

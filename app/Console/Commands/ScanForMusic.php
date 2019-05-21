@@ -5,6 +5,7 @@ namespace App\Console\Commands;
 use Arr;
 use getID3;
 use Storage;
+use File;
 use App\Song;
 use App\Album;
 use App\Artist;
@@ -71,9 +72,15 @@ class ScanForMusic extends Command
 
             $data = $this->buildSongData($file, $meta);
 
+            $this->createDirectory($data);
+            $this->copyFile($file, $data);
+
             if (! Song::where('path', $data->get('fullPath'))->first()) {
-                $this->filesystem->mkdir($data->get('path'));
-                $this->filesystem->copy($file, $data->get('fullPath'));
+                $this->createDirectory($data);
+                $this->copyFile($file, $data);
+
+                // $this->filesystem->mkdir($data->get('path'));
+                // $this->filesystem->copy($file, $data->get('fullPath'));
 
                 $artist = $this->findOrCreateArtist($data->get('artist'));
                 $album  = $this->findOrCreateAlbum($artist, $data->get('album'), $meta);
@@ -114,6 +121,7 @@ class ScanForMusic extends Command
             'bitrate'     => round($meta['bitrate'] / 1000) ?? null,
             'compilation' => $meta['comments']['part_of_a_compilation'] ?? false,
             'extension'   => $file->getExtension(),
+            'original'    => config('music.upload_path').'/'.$file->getRelativePathname(),
         ]);
 
         $song = $song->map(function($value) {
@@ -126,7 +134,7 @@ class ScanForMusic extends Command
 
         $song->put('path', config('music.media_path')."/{$song->get('artist')}/{$song->get('album')}");
         $song->put('filename', "{$song->get('artist')} - {$song->get('track')} - {$song->get('title')}.{$song->get('extension')}");
-        $song->put('fullPath', $song->get('path').'/'.$song->get('filename'));
+        $song->put('fullPath', $song->get('path').'/'.str_replace('/', '_', $song->get('filename')));
 
         return $song;
     }
@@ -137,9 +145,11 @@ class ScanForMusic extends Command
             ->files()
             ->followLinks()
             ->name('/\.(mp3|ogg|m4a|flac)$/i')
-            ->in(config('music.upload_path')));
+            ->in(storage_path('app/'.config('music.upload_path'))));
 
-        $found = count($uploads);
+        $uploads = collect($uploads);
+
+        $found = $uploads->count();
 
         if ($found === 0) {
             $this->info('Nothing found.');
@@ -232,5 +242,35 @@ class ScanForMusic extends Command
         }
 
         return $discNumber;
+    }
+
+    private function createDirectory($data)
+    {
+        if (config('music.use_cloud')) {
+            Storage::cloud()->makeDirectory($data->get('path'), 0755, true);
+            return;
+        }
+
+        Storage::makeDirectory($data->get('path'), 0755, true);
+        return;
+    }
+
+    private function copyFile($file, $data)
+    {
+        if (config('music.use_cloud')) {
+            $stream = fopen(storage_path('app/'.$data->get('original')), 'r+');
+
+            try {
+                Storage::cloud()->writeStream($data->get('fullPath'), $stream);
+            } catch (\Illuminate\Contracts\Filesystem\FileExistsException $exception) {
+                Storage::cloud()->updateStream($data->get('fullPath'), $stream);
+            }
+            
+            fclose($stream);
+            return;
+        }
+
+        $this->filesystem->copy($file, storage_path('app/'.$data->get('fullPath')));
+        return;
     }
 }
