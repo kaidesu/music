@@ -62,7 +62,7 @@ class ScanForMusic extends Command
 
         $bar       = $this->output->createProgressBar(count($files));
         $processed = 0;
-        
+
         $bar->start();
 
         foreach ($files as $file) {
@@ -70,7 +70,9 @@ class ScanForMusic extends Command
 
             getid3_lib::CopyTagsToComments($meta);
 
-            $data = $this->buildSongData($file, $meta);
+            if (! $data = $this->buildSongData($file, $meta)) {
+                continue;
+            }
 
             $this->createDirectory($data);
             $this->copyFile($file, $data);
@@ -84,9 +86,9 @@ class ScanForMusic extends Command
 
                 $artist = $this->findOrCreateArtist($data->get('artist'));
                 $album  = $this->findOrCreateAlbum($artist, $data->get('album'), $meta);
-                
+
                 $song = new Song;
-                
+
                 $song->title       = $data->get('title');
                 $song->track       = $data->get('track');
                 $song->disc        = $data->get('disc');
@@ -95,7 +97,7 @@ class ScanForMusic extends Command
                 $song->bitrate     = $data->get('bitrate');
                 $song->path        = $data->get('fullPath');
                 $song->compilation = $data->get('compilation');
-                
+
                 $album->songs()->save($song);
                 $processed++;
             }
@@ -109,6 +111,10 @@ class ScanForMusic extends Command
 
     private function buildSongData($file, $meta)
     {
+        if (isset($meta['error']) || !isset($meta['playtime_seconds'])) {
+            return false;
+        }
+
         $song = collect([
             'length'      => $meta['playtime_seconds'],
             'mtime'       => $file->getmTime(),
@@ -185,11 +191,11 @@ class ScanForMusic extends Command
             $year  = optional($meta['comments'])['year'][0];
 
             $album = new Album;
-            
+
             $album->name  = $this->convertEncoding($name);
             $album->year  = $this->convertEncoding($year) ?? null;
             $album->genre = $this->convertEncoding($genre) ?? null;
-            
+
             $album = $artist->albums()->save($album);
         }
 
@@ -199,9 +205,9 @@ class ScanForMusic extends Command
             $extension = explode('/', $cover[0]['image_mime'])[1];
             $contents  = $cover[0]['data'];
             $filename  = $album->id.'.'.$extension;
-            
+
             Storage::put('public/covers/'.$filename, $contents);
-    
+
             $album->cover = $filename;
             $album->save();
         }
@@ -265,7 +271,7 @@ class ScanForMusic extends Command
             } catch (\Illuminate\Contracts\Filesystem\FileExistsException $exception) {
                 Storage::cloud()->updateStream($data->get('fullPath'), $stream);
             }
-            
+
             fclose($stream);
             return;
         }
